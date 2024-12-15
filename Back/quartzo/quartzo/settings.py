@@ -31,12 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_app_novadata',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #libs
+    'django_admin_listfilter_dropdown',
+    'django_object_actions',
+    'import_export',
+    'novadata_utils',
+    'rangefilter',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'crum.CurrentRequestUserMiddleware',
 ]
 
 ROOT_URLCONF = "quartzo.urls"
