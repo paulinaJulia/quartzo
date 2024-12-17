@@ -1,0 +1,88 @@
+@layer components {
+	.btn {
+		@apply bg-primary-pure 
+		rounded
+		px-16 
+		cursor-pointer 
+		font-normal
+		text-white 
+		font-[.875rem] 
+		transition 
+		border
+		border-transparent 
+		ring-transparent 
+		shadow-transparent 
+		h-40 
+		inline-flex 
+		items-center 
+		leading-100
+		gap-6
+		shrink-0
+		justify-center;
+
+		&:hover {
+			@apply border-primary-pure 
+			bg-transparent 
+			text-primary-pure;
+		}
+
+		/* Secundario */
+		&.secondary {
+			@apply bg-primary-pure-light 
+			text-primary-pure;
+
+			&:hover {
+				@apply bg-primary-pure-light;
+			}
+		}
+		
+		
+		/* Terciario */
+		&.tertiary {
+			@apply bg-white text-neutral-70  border-neutral-10 transition hover:border-neutral-40 hover:text-neutral-50;
+		}
+
+		&.quartenary {
+			@apply bg-transparent text-primary-pure;
+			&:hover{
+				@apply border-transparent bg-primary-pure-light;
+			}
+		}
+
+		&.icon-left {
+			svg {
+				@apply w-[1rem] h-[1rem];
+			}
+			&:hover {
+				@apply fill-current;
+			}
+		}
+
+		&.icon-right {
+			svg {
+				@apply w-[1.5rem] h-[1.5rem];
+			}
+			&:hover {
+				@apply fill-current;
+			}
+		}
+		&.red {
+			@apply bg-alert-red-10 text-alert-red-100 hover:border-alert-red-100 hover:!bg-alert-red-10;
+		}
+
+		&.disabled {
+			@apply pointer-events-none
+			   select-none 
+			 bg-neutral-10 
+			 text-neutral-50;
+		}
+		&:active {
+		}
+	}
+	.btn-notificacao {
+		@apply text-neutral-70 h-48 w-48 rounded-full border-neutral-30 border grid place-items-center bg-white hover:bg-neutral-30 transition relative;
+	}
+	.btn-perfil {
+		@apply text-neutral-70 h-48  rounded-[99px] border-neutral-30 border bg-white hover:bg-neutral-30 transition relative flex items-center;
+	}
+}

@@ -1,0 +1,23 @@
+@layer components {
+	[js-dropdown] {
+		.dropdown-container {
+			@apply absolute -right-1 min-w-[15rem] p-8 bg-white shadow-regular border border-neutral-10 opacity-0 pointer-events-none translate-x-12 transition w-full z-50 -mt-2 rounded-b-md;
+		}
+		.drop-button {
+			@apply text-neutral-40 h-48 border-neutral-10 border bg-white hover:bg-neutral-05 transition relative flex items-center rounded-t-md font-semibold border-b-0;
+		}
+		
+		&.active,
+		&:hover {
+			.dropdown-container {
+				@apply opacity-100 pointer-events-auto translate-x-0;
+			}
+			.dropdown-area {
+				@apply pt-16;
+			}
+		}
+		.dropdown-item {
+			@apply rounded-sm cursor-pointer text-neutral-80 text-sm font-semibold hover:bg-neutral-20 transition block w-full shrink-0 py-8 px-12 text-left h-max;
+		}
+	}
+}

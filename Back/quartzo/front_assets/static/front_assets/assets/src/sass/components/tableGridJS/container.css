@@ -1,0 +1,8 @@
+.gridjs-container {
+  overflow: hidden;
+  display: inline-block;
+  padding: 2px;
+  color: #000;
+  position: relative;
+  z-index: 0;
+}/*# sourceMappingURL=container.css.map */

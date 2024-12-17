@@ -1,0 +1,30 @@
+@layer components {
+	.tabs {
+	}
+	.tabs-wrapper {
+	}
+	.tab-item {
+		@apply p-20 tracking-tight font-medium text-base inline-flex gap-6 text-neutral-70 cursor-pointer border-b-2 border-transparent transition bg-white  hover:border-neutral-20 hover:text-neutral-80 items-center shrink-0;
+		&.active {
+			@apply bg-primary-pure-light text-primary-pure border-primary-pure;
+		}
+		svg {
+			@apply h-20 w-20;
+		}
+		&.disabled {
+			@apply pointer-events-none
+			   select-none 
+			 bg-neutral-10 
+			 text-neutral-50;
+		}
+	}
+
+	.tab-collapse {
+		
+		@apply h-0 overflow-hidden;
+		transition: height 0.3s ease;
+		&.active {
+			@apply h-auto;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+{% extends 'admin/base.html' %}
+{% load templates_tags_admin %}
+{% load static %}
+{% block extrahead %}
+{% customizados_style_admin as customizados_style_admin %}
+{% customizados_script_admin as customizados_script_admin %}
+{% customizados_head_admin as customizados_head_admin %}
+
+{% for head_custom in customizados_head_admin %}
+{{head_custom|safe}}
+{% endfor %}
+
+<style>
+	{% for estilo in customizados_style_admin %}
+	{{estilo|safe}}
+	{% endfor %}
+</style>
+
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- jquery mask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+<!-- target blank -->
+<script src="{% static 'front_assets/assets/src/admin/target_blank.js' %}"></script>
+<script>
+	{% for customjs in customizados_script_admin %}
+	{{customjs|safe}}
+	{% endfor %}
+</script>
+{% endblock %}

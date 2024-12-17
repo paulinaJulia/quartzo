@@ -1,0 +1,1196 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="mb-56 overflow-hidden ">
+
+  <div class="W-100 py-72  bg-gradient-to-r to-primary-30 from-primary-pure mb-40 ">
+    <h1 class="text-white mx-16 text-2xl font-semibold">Design System</h1>
+  </div>
+  <div class="container px-32 grid grid-cols-1 divide-y gap-72 max-w-[1100px] mx-auto divide-neutral-50">
+
+
+
+    <!-- tipografias -->
+    <section id="tipografias">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Typograph</h2>
+
+      <p class="text-2xl"> Text 2xl</p>
+      <p class="text-xl"> Text xl</p>
+      <p class="text-lg"> Text lg</p>
+      <p class="text-base"> Text base</p>
+      <p class="text-sm"> Text sm</p>
+      <p class="text-xs"> Text xs</p>
+      <p class="text-xs-space"> Text xs space</p>
+    </section>
+
+    <!-- inputs -->
+    <section id="inputs">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Inputs</h2>
+
+      <div class="card p-32 w-max">
+        <div class="inline-flex flex-col gap-8 ">
+          <input class="input-text" placeholder="Default" js-ativo type="text">
+          <input class="input-text h-48" placeholder="height 48" js-ativo type="text">
+          <input class="input-text h-56" placeholder="height 56" js-ativo type="text">
+          <input class="input-text inverse" placeholder="Inverse" js-ativo type="text">
+          <input class="input-text disabled" placeholder="disabled" js-ativo type="text">
+          <div class="input-icon">
+            <input class="input-text" placeholder="com icone" js-ativo type="text">
+            <svg>
+              <use xlink:href="#icon_close"></use>
+            </svg>
+          </div>
+          <div class="input-icon icon-left">
+            <input class="input-text" placeholder="com icone esquerda" js-ativo type="text">
+            <svg>
+              <use xlink:href="#icon_close"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Textarea -->
+    <section>
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100 w-">TextArea</h2>
+      <div class="card p-32 flex gap-8 ">
+        <textarea name="" id="" cols="30" rows="10" class="textarea" placeholder="Escreva aqui..." js-ativo></textarea>
+        <textarea name="" id="" cols="30" rows="10" class="textarea inverse" placeholder="Escreva aqui..."></textarea>
+        <div class="textarea-icon">
+          <textarea name="" id="" cols="30" rows="10" class="textarea" placeholder="Textarea com icone" js-ativo></textarea>
+          <svg class="text-neutral-70">
+            <use xlink:href="#icon_close"></use>
+          </svg>
+        </div>
+        <div class="textarea-icon icon-left">
+          <textarea name="" id="" cols="30" rows="10" class="textarea" placeholder=" icone esquerdo" js-ativo></textarea>
+          <svg class="text-neutral-70">
+            <use xlink:href="#icon_close"></use>
+          </svg>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TextHelper -->
+    <section>
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100 w-">TextHelper</h2>
+      <div class="card p-32">
+        <span class="texthelper" data-tippy-content="helper">
+          text helper
+
+        </span>
+        <div class="texthelper-icon" data-tippy-content="helper">
+          <svg>
+            <use xlink:href="#icon_helper"></use>
+          </svg>
+          <span class="texthelper">
+            text helper
+
+          </span>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Labels -->
+    <section id="labels">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100 w-">Labels</h2>
+      <div class="inline-flex gap-8 ">
+        <div class="inline-flex gap-16 ">
+          <label class="label">Label 1</label>
+          <label class="label filled">Label Filled</label>
+          <label class="label primary">Label primary</label>
+          <label class="label error">Label error</label>
+          <label class="label sucess">Label Sucess</label>
+          <label class="label disabled">Label disabled</label>
+
+          <div class="label-icon">
+            <label class="label">Label Icon</label>
+            <svg>
+              <use xlink:href="#icon_close"></use>
+            </svg>
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Titulos -->
+    <section id="titulos">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100 w-">Titulos</h2>
+      <div class="flex flex-col gap-32">
+
+        <h1 class="title">Titulo</h1>
+        <h1 class="title">
+          <svg>
+            <use xlink:href="#icon_home"></use>
+          </svg>
+          Titulo icon
+        </h1>
+        <p class="subtitle ">Subtitulo</p>
+        <p class="subtitle ">
+          <svg>
+            <use xlink:href="#icon_home"></use>
+          </svg>
+          Subtitulo Icone
+        </p>
+
+      </div>
+    </section>
+
+    <!-- Shadows -->
+    <section id="shadows">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Shadows - Card</h2>
+
+      <div class="inline-flex gap-32 ">
+
+        <div class="card shadow-sm">
+          <p class="m-56">shadow sm</p>
+        </div>
+        <div class="card shadow-regular">
+          <p class="m-56">shadow regular</p>
+        </div>
+        <div class="card shadow-lg">
+          <p class="m-56">shadow lg</p>
+        </div>
+        <div class="card ">
+          <p class="m-56">card exemplo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botoes -->
+    <section class="flex flex-col gap-16" id="botoes">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Botoes</h2>
+      <!-- PRIMARIO -->
+      <div class="inline-flex gap-32 ">
+        <button class="btn">Botao primario</button>
+        <button class="btn h-48">Botao 48</button>
+        <button class="btn h-56">Botao 56</button>
+        <button class="btn icon-left">
+          Botao icone
+          <svg style="--cor-1:white">
+            <use xlink:href="#icon_close"></use>
+          </svg>
+        </button>
+        <button class="btn icon-right">
+          <svg style="--cor-1:white">
+            <use xlink:href="#icon_close"></use>
+          </svg>
+          Botao icone
+        </button>
+
+        <button class="btn icon-left">
+          <svg style="--cor-1:white">
+            <use xlink:href="#icon_close"></use>
+          </svg>
+
+        </button>
+        <button class="btn disabled">Botao Desabilitado</button>
+
+      </div>
+
+      <div class="inline-flex gap-32 mt-16">
+        <button class="btn secondary">Botao Secundario</button>
+        <button class="btn secondary red icon-left">
+          <svg style="--cor-1:white">
+            <use xlink:href="#icon_close"></use>
+          </svg> Botao Secundario red</button>
+      </div>
+      <div class="inline-flex gap-32 mt-16">
+        <button class="btn tertiary">Botao terciario
+
+        </button>
+      </div>
+      <div class="inline-flex gap-32 mt-16">
+        <button class="btn quartenary">Botao quartenario</button>
+      </div>
+    </section>
+
+    <!-- show_password -->
+    <section id="password" class="relative">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Show PassWord</h2>
+
+
+      <div class="input-icon">
+        <div class="show-password" js-password>
+          <input class="input-text" placeholder="com icone" type="password" js-input-password>
+
+          <div class="password">
+            <ion-icon class="eye" name="eye-outline"></ion-icon>
+            <ion-icon class="eye-off" name="eye-off-outline"></ion-icon>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+    <!-- Selects -->
+    <section id="selects">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Selects</h2>
+
+      <div class="inline-flex gap-32 card !p-40">
+        <div class="select-container h-40">
+          <select js-choices placeholder="placeholder">
+            <option value="" selected disabled>Placeholder</option>
+            <option value="1">valor 1</option>
+            <option value="1">valor 2</option>
+          </select>
+        </div>
+
+        <div class="select-container h-48">
+          <select js-choices placeholder="placeholder">
+            <option value="" selected disabled>Placeholder 48</option>
+            <option value="1">valor 1</option>
+            <option value="1">valor 2</option>
+          </select>
+        </div>
+
+        <div class="select-container h-56">
+          <select js-choices placeholder="placeholder">
+            <option value="" selected disabled>Placeholder 56</option>
+            <option value="1">valor 1</option>
+            <option value="1">valor 2</option>
+          </select>
+        </div>
+
+        <div class="select-container h-56 secondary">
+          <select js-choices placeholder="placeholder">
+            <option value="" selected disabled>Placeholder secondary</option>
+            <option value="1">valor 1</option>
+            <option value="1">valor 2</option>
+          </select>
+        </div>
+        <div class="select-container h-56 tertiary">
+          <select js-choices placeholder="placeholder">
+            <option value="" selected disabled>Placeholder secondary</option>
+            <option value="1">valor 1</option>
+            <option value="1">valor 2</option>
+          </select>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Radio Button -->
+    <section id="radio-button">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Radio Button</h2>
+
+      <div class="inline-flex gap-32">
+
+
+        <div class="radio-container size-16">
+          <label class="check-label">
+            radio 16
+            <input type="radio" name="teste" class="sr-only">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+          </label>
+        </div>
+
+        <div class="radio-container">
+          <label class="check-label">
+            radio 20
+            <input type="radio" name="teste" class="sr-only">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+          </label>
+        </div>
+
+        <div class="radio-container size-24">
+          <label class="check-label">
+            radio 24
+            <input type="radio" name="teste" class="sr-only">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+          </label>
+        </div>
+        <div class="radio-container size-24 disabled">
+          <label class="check-label">
+            radio 24
+            <input type="radio" name="teste" class="sr-only">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+          </label>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section id="checkbox">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Checkbox</h2>
+      <div class="inline-flex gap-32">
+        <div class="radio-container round size-16 flex items-center">
+          <label class="check-label text-sm py-8 w-full px-4 hover:bg-neutral-10  transition-colors">
+            <input type="checkbox" checked="" class="sr-only" value="data_criacao__date">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+            Data de criação do pedido
+          </label>
+        </div>
+        <div class="radio-container round size-20 flex items-center">
+          <label class="check-label text-sm py-8 w-full px-4 hover:bg-neutral-10  transition-colors">
+            <input type="checkbox" checked="" class="sr-only" value="data_criacao__date">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+            Data de criação do pedido
+          </label>
+        </div>
+        <div class="radio-container round size-24 flex items-center">
+          <label class="check-label text-sm py-8 w-full px-4 hover:bg-neutral-10  transition-colors">
+            <input type="checkbox" checked="" class="sr-only" value="data_criacao__date">
+            <span class="radio-circle">
+              <i class="radio-circle-inner"></i>
+            </span>
+            Data de criação do pedido
+          </label>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Toogle -->
+    <section id="radio-button">
+
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Toogle</h2>
+
+      <div class="flex gap-16 items-end">
+        <div>
+          <p>inverse</p>
+          <div class="input-toogle inverse">
+            <label>
+              <input type="checkbox" name="teste" class="sr-only">
+              <span> <i></i></span>
+            </label>
+          </div>
+
+        </div>
+
+        <div>
+          <p>40</p>
+          <div class="input-toogle group">
+            <label>
+              <input type="checkbox" name="teste" class="sr-only">
+              <span> <i></i></span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <p>48</p>
+          <div class="input-toogle sm group">
+            <label>
+              <input type="checkbox" name="teste" class="sr-only">
+              <span> <i></i></span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <p>56</p>
+          <div class="input-toogle md group">
+            <label>
+              <input type="checkbox" name="teste" class="sr-only">
+              <span> <i></i></span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- Tabs -->
+    <section id="tabs">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Tabs</h2>
+
+      <div class="tabs" js-tab>
+
+        <ul class="tabs-wrapper flex">
+          <li class="tab-item active" data-tab="tab-1">
+            <svg>
+              <use xlink:href="#icon_close"></use>
+            </svg>
+            Grupo de contas
+          </li>
+          <li class="tab-item" data-tab="tab-2">
+            Contas Gerenciais Nível 1
+          </li>
+          <li class="tab-item " data-tab="tab-3">
+
+
+            Contas Gerenciais Nível 2
+
+          </li>
+          <li class="tab-item disabled" data-tab="tab-4">
+            Contas Gerenciais Nível 3
+          </li>
+        </ul>
+
+
+        <div class="tabs-content">
+
+          <div class="tab-collapse active" data-tab="tab-1">
+            <div class="tab-container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A numquam assumenda fugit ipsam
+              repudiandae facilis! Fugit culpa, repellat dolorum provident, nisi nostrum laborum, pariatur
+              quidem temporibus aperiam ea aspernatur vel.
+            </div>
+          </div>
+
+          <div class="tab-collapse" data-tab="tab-2">
+            <div class="tab-container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A numquam assumenda fugit ipsam
+              repudiandae facilis! Fugit culpa, repellat dolorum provident, nisi nostrum laborum, pariatur
+              quidem temporibus aperiam ea aspernatur vel.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A numquam assumenda fugit ipsam
+              repudiandae facilis! Fugit culpa, repellat dolorum provident, nisi nostrum laborum, pariatur
+              quidem temporibus aperiam ea aspernatur vel.
+            </div>
+          </div>
+
+          <div class="tab-collapse" data-tab="tab-3">
+            <div class="tab-container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A numquam assumenda fugit ipsam
+              repudiandae facilis! Fugit culpa, repellat dolorum provident, nisi nostrum laborum, pariatur
+              quidem temporibus aperiam ea aspernatur vel.
+              repellat dolorum provident,
+            </div>
+          </div>
+
+          <div class="tab-collapse" data-tab="tab-4">
+            <div class="tab-container">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. A numquam assumenda fugit ipsam
+              repudiandae facilis! Fugit culpa, repellat dolorum provident
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- accordions -->
+    <section id="accordions">
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Accordions</h2>
+      <div class="card p-32">
+
+        <!-- Acordion  item-->
+        <div class="accordion" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title  icon-left active" data-accordion="1">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Title accordion
+            </div>
+            <div class="accordion-content active" data-accordion="1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Acordion  item-->
+        <div class="accordion" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title icon-left" data-accordion="2">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Title accordion
+            </div>
+            <div class="accordion-content" data-accordion="2">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xl my-24 text-neutral-80">Acordion inverse</p>
+
+        <!-- item accordion inverse -->
+        <div class="accordion inverse" js-accordion-container>
+          <div class="accordion-item active" js-accordion js-accordion-gsap>
+            <div class="accordion-title  icon-left" data-accordion="1">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Title accordion
+            </div>
+            <div class="accordion-content active" data-accordion="1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- item accordion inverse -->
+        <div class="accordion inverse" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title  icon-left" data-accordion="1">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Title accordion
+            </div>
+            <div class="accordion-content" data-accordion="1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <p class="text-xl my-24 text-neutral-80">Apenas 1 aberto com parent</p>
+
+
+        <div class="accordion inverse" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title  icon-left" data-accordion="1" js-comentario-parent="comentario-1">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Title accordion
+            </div>
+            <div class="accordion-content" data-accordion="1" js-comentario-parent="comentario-1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion inverse" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title  icon-left" data-accordion="2" js-comentario-parent="comentario-1">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Title accordion
+            </div>
+            <div class="accordion-content" data-accordion="2" js-comentario-parent="comentario-1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="accordion inverse" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title icon-right" data-accordion="3" js-comentario-parent="comentario-1">
+              <svg>
+                <use xlink:href="#seta_up"></use>
+              </svg>
+              Accordion icon right
+            </div>
+            <div class="accordion-content" data-accordion="3" js-comentario-parent="comentario-1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="text-xl my-24 text-neutral-80">Accordion variantes</p>
+        <div class="accordion" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title h-48" data-accordion="3" js-comentario-parent="comentario-1">
+              Accordion 48
+            </div>
+            <div class="accordion-content" data-accordion="3" js-comentario-parent="comentario-1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="accordion" js-accordion-container>
+          <div class="accordion-item" js-accordion js-accordion-gsap>
+            <div class="accordion-title h-56" data-accordion="3" js-comentario-parent="comentario-1">
+              Accordion 56
+            </div>
+            <div class="accordion-content" data-accordion="3" js-comentario-parent="comentario-1">
+              <div class="accordion-container max-w-[468px]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus nunc elementum, et, nisl.
+                Etiam a
+                velit
+                commodo convallis a est dapibus tempus. Libero bibendum ipsum sit nunc vel, fringilla
+                lacinia.
+                Lobortis.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <div class="card p-24">
+        <h2 class="text-3xl mt-16 font-semibold text-neutral-100 mb-48"> Data Table NOVA VERSÃO</h2>
+
+        <div class="flex flex-col">
+          <div class="flex items-center mb-16 gap-16">
+
+            <div class="flex gap-8 items-center input-container self-start">
+              <input class="input-text h-48 bg-white" placeholder="Buscar" js-ativo js-table-search type="text">
+              <button class="btn quartenary h-48">
+                <svg class="w-24 h-24">
+                  <use xlink:href="#icon_search"></use>
+                </svg>
+              </button>
+            </div>
+
+            <div js-dropdown class="pb- h-full  ml-auto">
+              <button class="drop-button">
+                <p class="text-sm leading-100 ml-12 mr-4 text-neutral-70 font-semibold">Selecionar Colunas</p>
+
+                <svg class="w-24 h-24">
+                  <use xlink:href="#icon_seta_down"></use>
+                </svg>
+
+                <div class="dropdown-area">
+
+                  <div class="dropdown-container top-48" js-selecionar-colunas="table_teste">
+
+                    <div class="radio-container round size-16 flex items-center">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_1">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 1
+                      </label>
+                    </div>
+
+
+                    <div class="radio-container round size-16 flex items-center ">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_2">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 2
+                      </label>
+                    </div>
+
+                    <div class="radio-container round size-16 flex items-center ">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_3">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 3
+                      </label>
+                    </div>
+
+                    <div class="radio-container round size-16 flex items-center ">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_4">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 4
+                      </label>
+                    </div>
+
+                    <div class="radio-container round size-16 flex items-center ">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_5">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 5
+                      </label>
+                    </div>
+
+
+
+                    <div class="radio-container round size-16 flex items-center ">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_6">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 6
+                      </label>
+                    </div>
+
+
+                    <div class="radio-container round size-16 flex items-center ">
+                      <label class="check-label text-sm py-4 w-full">
+                        <input type="checkbox" checked class="sr-only" value="coluna_7">
+                        <span class="radio-circle">
+                          <i class="radio-circle-inner"></i>
+                        </span>
+                        Coluna 7
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              </button>
+            </div>
+
+            <label class="flex items-center gap-4 text-sm text-neutral-80 font-medium cursor-pointer">
+
+              <div class="select-container h-48 text-neutral-70">
+
+                <select id="select-table-recentes" js-choices js-table-recentes placeholder="placeholder" class="">
+                  <option value="id" selected>Mais Recentes</option>
+                  <option value="-id">Mais Antigos</option>
+
+                </select>
+              </div>
+
+            </label>
+
+            <label class="flex items-center gap-4 text-sm text-neutral-70 font-medium cursor-pointer">
+              <p>Linhas por página</p>
+
+              <div class="select-container h-48">
+
+                <select id="select-table" js-choices js-table-qnt placeholder="placeholder" class="">
+                  <option value="10" selected>10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="table-basic">
+            <table id="table_teste" js-table-ordenation>
+              <thead>
+                <tr>
+                  <th data-reference="coluna_1" js-add-filter="order, coluna_1">
+                    <p>ID</p>
+                    <span></span>
+                  </th>
+                  <th data-reference="coluna_2" js-add-filter="order, coluna_2">
+                    <div class="flex items-center gap-4">
+                      <p>Name</p>
+                      <div class="texthelper-icon" data-tippy-content="O que que há Velinho !!!">
+                        <svg>
+                          <use xlink:href="#icon_helper"></use>
+                        </svg>
+
+                      </div>
+                    </div>
+                  </th>
+                  <th data-reference="coluna_3">
+                    <p>Title</p>
+                  </th>
+                  <th class="number" data-reference="coluna_4">
+                    <p>Value</p>
+                  </th>
+                  <th data-reference="coluna_5">
+                    <p>Status</p>
+                  </th>
+                  <th data-reference="coluna_6">
+                    <p>Position</p>
+                  </th>
+                  <th data-reference="coluna_7">
+                    <p>Actions</p>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td data-reference="coluna_1">
+                    <div class="px-8 py-10 td-container">
+                      <p class="text-primary-pure font-semibold">1</p>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_2">
+                    <div class="px-8 py-10 td-container">
+                      <p class="">John Doe</p>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_3">
+                    <div class="px-8 py-10 td-container">
+                      <p class="">Software engineer</p>
+                    </div>
+
+                  </td>
+                  <td class="number" data-reference="coluna_4">
+                    <div class="px-8 py-10 td-container">
+                      <span>R$ 1,200.00</span>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_5">
+                    <div class="px-8 py-10 td-container">
+                      <span class="badge" js-badge>Active</span>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_6">
+
+                    <div class="px-8 py-10 td-container">
+                      <p>Senior</p>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_7">
+                    <div class="px-8 td-container justify-end gap-8">
+                      <button type="button" class="btn secondary">
+                        <svg>
+                          <use xlink:href="#icon_pen"></use>
+                        </svg>
+                      </button>
+                      <button type="button" class="btn secondary">
+                        <svg>
+                          <use xlink:href="#icon_search"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-reference="coluna_1">
+                    <div class="px-8 py-10 td-container">
+                      <p class="text-primary-pure font-semibold">2</p>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_2">
+                    <div class="px-8 py-10 td-container">
+                      <p class="">John Doe</p>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_3">
+                    <div class="px-8 py-10 td-container">
+                      <p class="">Software engineer</p>
+                    </div>
+                  </td>
+                  <td class="number" data-reference="coluna_4">
+                    <div class="px-8 py-10 td-container">
+                      <span>R$ 1,200.00</span>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_5">
+                    <div class="px-8 py-10 td-container">
+                      <span class="badge">Active</span>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_6">
+
+                    <div class="px-8 py-10 td-container">
+                      <p>Senior</p>
+                    </div>
+                  </td>
+                  <td data-reference="coluna_7">
+                    <div class="px-8 td-container justify-end gap-8">
+                      <button type="button" class="btn secondary">
+                        <svg>
+                          <use xlink:href="#icon_pen"></use>
+                        </svg>
+                      </button>
+                      <button type="button" class="btn secondary">
+                        <svg>
+                          <use xlink:href="#icon_search"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="table-pagination">
+            <button class="btn secondary icon-left">
+              <svg>
+                <use xlink:href="#icon_excel"></use>
+              </svg>
+
+              Baixar tabela
+            </button>
+
+            <div class="pagination ">
+              <span class="flex items-center gap-8 w-full justify-end mt-8">
+
+
+                <a href="#" data-tippy-content="Primeira Pagina" class="rounded-pag">
+                  <svg class="w-14 h-14">
+                    <use xlink:href="#icon_anterior_double"></use>
+                  </svg>
+                </a>
+
+
+                <a href="#" data-tippy-content="Anterior" class="rounded-pag ">
+                  <svg class="h-28 w-28">
+                    <use xlink:href="#icon_anterior"></use>
+                  </svg>
+                </a>
+
+
+                <span class="current">
+                  Página 1 de 10.
+                </span>
+
+
+                <a js-add-filter="page, 1" data-tippy-content="Próxima" class="rounded-pag  rotate-180">
+                  <svg class="h-28 w-28">
+                    <use xlink:href="#icon_anterior"></use>
+                  </svg>
+                </a>
+
+                <a js-add-filter="page, 2" href="#" texthelper data-tippy-content="Última Pagina" class="rounded-pag rotate-180">
+                  <svg class="w-14 h-14">
+                    <use xlink:href="#icon_anterior_double"></use>
+                  </svg>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Tabela simples</h2>
+      <div class="card p-32">
+        {% block table %}
+
+        <div class="table-basic">
+          <table id="table_atividade_pastagem_floresta" js-table-ordenation>
+            <thead>
+              <tr>
+                <th class="w-[5%]" data-reference="id" js-add-filter="order, id">
+                  <p>ID</p>
+                </th>
+                <th data-reference="nome" js-add-filter="order, nome">
+                  <p>Nome</p>
+                </th>
+                <th class="w-[10%]" data-reference="acoes" js-add-filter="order, acoes">
+                  <p>Ações</p>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td data-reference="id">
+                  <div class="px-8 py-10 td-container">
+                    <a href="#" class="text-primary-pure font-semibold">
+                      0
+                    </a>
+                  </div>
+                </td>
+                <td data-reference="nome">
+                  <div class="px-8 py-10 td-container">
+                    <p class="">estático</p>
+                  </div>
+                </td>
+                <td data-reference="acoes">
+                  <!-- Coluna de ações -->
+                  <div class="px-8 td-container justify-end gap-8">
+                    <a href="#" class="btn secondary">
+                      <svg>
+                        <use xlink:href="#icon_search"></use>
+                      </svg>
+                    </a>
+                    <a href="#" class="btn secondary">
+                      <svg>
+                        <use xlink:href="#icon_pen"></use>
+                      </svg>
+                    </a>
+                    <!-- <button type="button" class="btn secondary">
+                                      <svg>
+                                          <use xlink:href="#icon_search"></use>
+                                      </svg>
+                                  </button> -->
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {% endblock %}
+
+        {% block baixar_table %}
+        <div class="inline-flex md2:w-full mt-16">
+          <button class="btn secondary h-48 icon-right md2:w-full md2:h-48">
+            <svg>
+              <use xlink:href="#icon_excel"></use>
+            </svg>
+            Baixar Tabela
+          </button>
+        </div>
+        {% endblock %}
+      </div>
+    </section>
+
+    <section>
+
+      <h2 class="mb-16 text-3xl mt-16 font-semibold text-neutral-100">Secao sucesso exemplo</h2>
+
+      <!-- exemplo sucess -->
+      <div class="card mt-48">
+        <div class="my-72 mx-auto max-w-[352px]">
+          <svg class="svg-animate-check mx-auto mb-24" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="path-1" d="M7.5 60.128C7.5 88.7621 30.7125 111.975 59.3466 111.975H60.6534C89.2875 111.975 112.5 88.7621 112.5 60.128C112.5 31.4939 89.2875 8.28132 60.6534 8.28132H59.3466C30.7125 8.28132 7.5 31.4939 7.5 60.128Z" fill="#004993" stroke="#E6EDF5" stroke-width=" 15" stroke-linecap="round" stroke-linejoin="round" />
+            <path class="path-2" d="M45 60.1294L56.25 71.216L75 52.7383" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+
+          <p class="text-xl font-semibold text-neutral-90 block max-w-[214px] mx-auto text-center">O Relatório
+            de Entrega foi salvo com
+            sucesso!!</p>
+          <a href="{% url 'home' %}" class="btn secondary mt-64 w-full h-48">Voltar para home</a>
+        </div>
+      </div>
+    </section>
+
+
+
+
+  </div>
+</main>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const urls = {
+    serverUrl: `/api/compras/?x=`,
+    columnsURL: '/compras/compra-columns/'
+  }
+
+  const initTable = async () => {
+
+    const tableContainer = document.querySelector("#grid-table")
+    const request = await GLOBAL.get(urls.columnsURL)
+    if (!request) return
+
+    const {
+      columns
+    } = await request.data
+
+    const customColumns = columns.map(c => {
+      const condition = gridjs.html(`<div>  </div>`)
+      const formatacao = (currentValue, row) => gridjs.html(`<a href='${currentValue}'>${currentValue}</a>`)
+
+      return {
+        id: c.id,
+        name: c.name,
+        formatter: c.action ? formatacao : null
+      }
+    })
+
+    GLOBAL.initGRIDJS(tableContainer, urls, customColumns, {
+      ///props
+    })
+  }
+
+  // initTable()
+</script>
+<script>
+	// const showLoader = () => loaderElement.classList.remove('d-none')
+	// const hideLoader = () => loaderElement.classList.add('d-none')
+
+	// const filtrosDaTabela = filtros
+	// 	.replace('clienteid', 'projeto__cliente__id')
+	// 	.replace('userid', 'responsavel_task__id')
+	// 	.replace('projetoid', 'projeto__id')
+	// 	.replace('?', '&')
+
+	// console.log(filtrosDaTabela)
+
+	// tabela.updateConfig({
+	// 	server: {
+	// 		url: `${origin}/api/task/?o=""`,
+	// 		then: (data) => generateArrayDataForTable(data.results),
+	// 		total: (data) => data.count,
+	// 	},
+	// 	pagination: {
+	// 		enabled: true,
+	// 		limit: 16,
+	// 		server: {
+	// 			url: (urlApi, page, limit) => {
+	// 				console.log(urlApi, page, limit)
+	// 				return `${urlApi}&page=${++page}&page_size=${limit}${filtrosDaTabela}`
+	// 			},
+	// 		},
+	// 	},
+	// }).forceRender()
+</script>
+
+{% endblock %}

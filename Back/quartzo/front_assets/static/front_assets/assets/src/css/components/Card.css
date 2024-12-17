@@ -1,0 +1,5 @@
+@layer components {
+	.card {
+		@apply min-h-[40px] border-[1px] border-neutral-10 shadow-sm bg-white rounded-lg;
+	}
+}

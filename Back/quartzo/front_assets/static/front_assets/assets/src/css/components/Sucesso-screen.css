@@ -1,0 +1,19 @@
+@keyframes animateScale {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.svg-animate-check {
+	.path-1 {
+		animation: animateScale both 0.3s ease;
+		transform-origin: center center;
+	}
+	.path-2 {
+		animation: animateScale both 0.3s ease 0.2s;
+		transform-origin: center center;
+	}
+}

@@ -1,0 +1,14 @@
+@layer components{
+    .texthelper{
+        @apply text-neutral-60 tracking-tight font-medium text-xs ;
+    }
+
+    .texthelper-icon{
+        @apply flex items-center gap-6 text-neutral-60;
+       
+        svg {
+            @apply w-24 h-24;
+        }
+    }
+
+}

@@ -1,0 +1,42 @@
+body {
+	overflow-x: hidden;
+	opacity: 0;
+	font-feature-settings: "pnum"on, "lnum"on;
+	@apply bg-primary-bg;
+
+	$size: 6px;
+	$foreground-color: #f1f3f5;
+	$background-color: #adb5bd;
+
+	--width-menu: 21.5rem;
+	--width-menu-closed: 5.625rem;
+	--width-notification-closed: 5.625rem;
+	--width-notification: 21.875rem;
+	--width-menu-1: 21.5rem;
+	--width-menu-2: 21.5rem;
+	--width-menu-3: 21.5rem;
+
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	&.DOMContentLoaded {
+		opacity: 1;
+
+	}
+
+	&.DOMContentLoaded .container-login{
+		@apply  translate-y-0 opacity-100;
+	}
+
+	
+}

@@ -1,0 +1,87 @@
+.radio-container {
+	
+	.check-label {
+		@apply inline-flex items-center gap-8 cursor-pointer font-medium text-base text-neutral-60 leading-100 select-none;
+	}
+	.radio-circle {
+		@apply inline-flex items-center w-[20px] h-[20px] bg-white rounded-full border-2 border-neutral-40 relative shrink-0 transition-all hover:shadow-blue hover:border-primary-pure;
+	}
+	.radio-circle-inner {
+		@apply absolute bg-primary-pure w-0 h-0 rounded-full inset-0 m-auto shrink-0;
+		transition: 0.2s ease-out;
+		transition-property: width height;
+	}
+	input:checked {
+		~ span {
+			@apply border-primary-pure;
+			i {
+				@apply h-[12px] w-[12px];
+			}
+		}
+	}
+
+
+
+	&.size-16 {
+		.check-label {
+			@apply text-sm;
+		}
+		.radio-circle {
+			@apply w-[16px] h-[16px];
+		}
+		input:checked {
+			~ span {
+				i {
+					@apply h-[8px] w-[8px];
+				}
+			}
+		}
+	}
+
+
+
+	&.size-24 {
+		.radio-circle {
+			@apply w-[24px] h-[24px];
+		}
+		input:checked {
+			~ span {
+				i {
+					@apply h-[16px] w-[16px];
+				}
+			}
+		}
+	}
+	&.round {
+		.radio-circle {
+			@apply rounded;
+			&-inner {
+				border-radius: initial !important;
+				transition: initial;
+			}
+		}
+
+		input:checked {
+			~ span {
+				i {
+					background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxOSAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3IDJMNy42MjY4MSAxMkwyIDUuOTk2OTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=);
+					background-size: contain;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: auto;
+					background-position: 100%;
+					border-radius: initial;
+				}
+			}
+		}
+	}
+	&.disabled {
+		@apply select-none;
+		.check-label {
+			@apply pointer-events-none text-neutral-40;
+		}
+		.radio-circle {
+			@apply pointer-events-none opacity-20;
+		}
+	}
+}

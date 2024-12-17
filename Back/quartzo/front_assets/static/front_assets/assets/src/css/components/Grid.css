@@ -1,0 +1,18 @@
+@layer components{
+  .grid-template{
+      @apply grid grid-cols-2 bg-neutral-10;
+
+      .container-left{
+          @apply h-screen p-48 bg-bg-login bg-cover bg-no-repeat bg-center flex items-center md:hidden;
+
+          svg{
+             @apply object-contain w-[39.1875rem] h-[39.5rem] mx-auto;
+          }
+      }
+
+      .container-right{
+          @apply flex items-center justify-center h-screen bg-white md:col-span-2;
+      }
+  }
+
+}

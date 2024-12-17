@@ -1,0 +1,10 @@
+{
+	"plugins": {
+		"postcss-import": { },
+		"tailwindcss/nesting": { },
+		"tailwindcss": { },
+		"postcss-nested": { },
+		"postcss-mixins": { },
+		"postcss-simple-vars": { }
+	}
+}

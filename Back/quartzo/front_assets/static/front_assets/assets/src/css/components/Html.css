@@ -1,0 +1,29 @@
+html {
+	--font-base: 100%;
+	font-size: var(--font-base);
+}
+
+@media (max-width: 1446px) {
+	html {
+		/* font-size: calc(var(--font-base) - 12.25%); */
+		font-size: calc(var(--font-base) - 18.25%);
+	}
+}
+
+/* @media (max-width: 1366px) {
+	html {
+		font-size: calc(var(--font-base) - 18.25%);
+	}
+} */
+
+@media (max-width: 980px) {
+	html {
+		font-size: calc(var(--font-base) - 12.5%);
+	}
+}
+
+@media (max-width: 340px) {
+	html {
+		font-size: calc(var(--font-base) - 30%);
+	}
+}

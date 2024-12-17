@@ -1,0 +1,11 @@
+.gridjs-resizable {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 5px;
+}
+.gridjs-resizable:hover {
+  cursor: ew-resize;
+  background-color: #9bc2f7;
+}/*# sourceMappingURL=resizable.css.map */

@@ -1,0 +1,190 @@
+@layer components{
+
+  .fundo-alerta{
+    width:100vw;
+		height:100vh;
+		background:rgba(0, 0, 0, 0);
+		top:0;
+		left:0;
+		backdrop-filter:blur(0.3125rem);
+		pointer-events:none;
+		transition:background 0.2s ease, opacity 0.2s ease;
+		position:fixed;
+		opacity:0;
+    z-index: 1000;
+    
+  }
+
+  /* w-[var(--width-notification)]*/
+  .alertas {
+    @apply w-[var(--width-notification)] flex-col overflow-x-hidden overflow-y-auto  bg-white absolute  right-0 rounded-lg  sm:!h-screen ;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15), 0px 2px 16px rgba(0, 0, 0, 0.06);
+    z-index: 10000;
+    height: 100vh;
+    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transform: translateX(0);
+    $foreground-color:#f1f3f5;
+		$background-color:#adb5bd;
+		&::-webkit-scrollbar {
+			width:3px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			@apply bg-primary-pure-light;
+		}
+
+		&::-webkit-scrollbar-track {
+			@apply bg-white;
+		}
+    .alertas-header {
+      @apply flex items-center justify-between p-24 w-full gap-8;
+      position: relative;
+      .icone{
+        @apply border border-borda-10 w-40 h-40 flex items-center justify-center rounded-full cursor-pointer hover:border-primary-pure transition-all shrink-0 grow-0 pointer-events-auto opacity-100 z-50 ;
+        /* left: 50%;
+        transform: translateX(-50%); */
+
+        svg{
+          @apply w-[24px] h-[24px] pointer-events-none  ;
+        }
+        .loading{
+          @apply hidden;
+        }
+      }
+  
+  
+      .titulo{
+        @apply text-xl font-medium transition-opacity  w-max ;
+
+        
+      }
+    }
+
+    .alerta-item {
+      @apply flex items-center gap-8 py-16 px-24 cursor-pointer h-96 border border-neutral-10;
+      transition: 0.3s ease;
+      &:hover {
+        background: #e6e6e6;
+      }
+
+        .alerta-perfil {
+          @apply shrink-0 grow-0 w-48 h-48 rounded-full flex items-center justify-center;
+          background: #06617c;
+          span {
+            @apply text-white font-bold text-base uppercase;
+          }
+        }
+        .alerta-content {
+          @apply flex items-center gap-4 transition-opacity;
+          .info{
+            @apply flex flex-col;
+            .header-info{
+              @apply flex items-center gap-4;
+              .nome{
+                @apply font-bold text-sm text-neutral-black capitalize ;
+              }
+              .data{
+                @apply text-xs font-medium block ml-4 text-neutral-70;
+    
+              }
+            }
+
+          }
+          .texto-alerta  {
+            @apply text-xs font-medium mt-8;
+            color: #4d4d4d;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+                    line-clamp: 2; 
+            -webkit-box-orient: vertical;
+          }
+    
+        }
+        a {
+          @apply inline-flex justify-center items-center w-32 h-32 text-neutral-black rounded-full bg-white border-neutral-10 flex-grow-0 flex-shrink-0;
+          box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+          svg{
+            transform: rotate(90deg) ;
+            --cor-1: #000;
+            pointer-events:none;
+
+          }
+          &.btn-delete{
+            @apply bg-alert-red-100;
+            svg{
+              --color2: #fff;
+            }
+      
+          }
+      
+        }
+  
+     
+    }
+    
+
+  }
+  
+
+
+  .notification-closed{
+    .alertas{
+
+      transform: translateX(100%);
+      @media(max-width: 639px){
+        transform: translateX(100%);
+      }
+      .alertas-header{
+        .icone{
+          @apply opacity-100 pointer-events-none;
+        
+        }
+        .titulo{
+         /* @apply opacity-0  w-max; */
+  
+        }
+       
+      }
+
+    }
+  }
+
+  .alerta-aberto{
+    .fundo-alerta{
+      @apply opacity-100;
+      pointer-events: auto;
+    }
+  }
+/* 
+  .notification-hover{
+    .alertas{
+      @apply w-[var(--width-notification)];
+      .alertas-header{
+        .icone{
+          @apply opacity-0 hidden; 
+    
+        }
+        .titulo{
+          @apply opacity-100;
+        }
+      }
+      .alerta-content{
+        @apply !opacity-100;
+      }
+    }
+  } */
+
+  @keyframes spinnerRotate{
+    from {
+        transform:rotate(0deg);
+      }
+
+      to {
+        transform:rotate(360deg);
+      }
+  }
+  
+}

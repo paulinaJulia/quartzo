@@ -1,0 +1,32 @@
+
+{% load static %}
+<header class="top-bar">
+  <div class="container-bar">
+    <div class="top-bar-wrapper">
+      <div class="breadcrumb" js-breadcrumb data-obj="{{breadcrumb}}">
+      </div>
+
+      <a class="logo-mobile hidden md2:flex items" href="{% url 'home' %}">
+        <img class="logo-principal" src="{% static 'front_assets/assets/src/images/logo-fechada.png' %}">
+      </a>
+      <div class="acoes flex items-center">
+        <div class="botao-notificacao {% if notificacao %} has-notifications {% endif %} mr-8" js-notification-open>
+          <svg>
+            <use xlink:href="#icone-notificacao"></use>
+          </svg>
+        </div>
+        <button class="botao-mobile" js-menu-toggle>
+          <i></i>
+          <i></i>
+          <i></i>
+        </button>
+      </div>
+      
+    </div>
+  </div>
+
+</header>
+
+<!-- BREADCRUMB MOBILE -->
+
+<div class="breadcrumb-mobile"> </div>

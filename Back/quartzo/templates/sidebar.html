@@ -1,0 +1,156 @@
+{% load static %}
+
+<nav
+	class="sidebar border-r border-primary-pure-light w-[var(--width-menu)] shrink-0 h-screen flex flex-col fixed top-0 left-0 z-50 py-32">
+
+	<div class="botao-mobile close absolute top-16 right-16 z-[100]" onclick="menu.toogleMenu()">
+		<svg class="w-[24px] h-[24px]">
+			<use xlink:href="#icone-close"></use>
+		</svg>
+	</div>
+
+
+	<a class="px-16 pt-0 pb-16 md2:pt-32 flex items-center logo border-b border-neutral-05 relative"
+		href="{% url 'home' %}">
+		<!-- <img class="w-[190px]" src="{% static 'home/assets/src/images/logo.png' %}"> -->
+		<img class="logo-principal" src="{% static 'front_assets/assets/src/images/logo-fechada.png' %}">
+		Boillerplate
+	</a>
+
+	<ul class="sidebar-items" js-menu-lista>
+		<div class="categoria px-32 mt-16">
+			<h3 class="">Categoria 1</h3>
+		</div>
+		<!-- <li class="group item-0 whitespace-nowrap">
+			<a class="menu-item group">
+				<div class="icone">
+					<svg class="w-24 h-24 grow-0 shrink-0">
+						<use xlink:href="#icone-documents-file-text"></use>
+					</svg>
+				</div>
+
+				<p>Visualizar Relatórios</p>
+				<svg class="icon group-hover:opacity-100 icon-arrow">
+					<use xlink:href="#icone-arrow-left"></use>
+				</svg>
+
+			</a>
+		</li> -->
+		<li class="group item-0 whitespace-nowrap" js-lista-name="dashboard">
+			<a class="menu-item group">
+				<div class="icone">
+					<svg class="w-24 h-24 grow-0 shrink-0">
+						<use xlink:href="#icone-documents-file-text"></use>
+					</svg>
+				</div>
+
+				<p>Dashboard</p>
+				<svg class="icon group-hover:opacity-100 icon-arrow">
+					<use xlink:href="#icone-arrow-left"></use>
+				</svg>
+
+			</a>
+		</li>
+
+		<div class="categoria px-32 mt-16">
+			<h3 class="text-xs font-bold text-neutral-50 transition-opacity opacity-100">Categoria 2</h3>
+		</div>
+
+		<li class="group item-0 whitespace-nowrap" js-lista-name="link_1">
+			<a class="menu-item group">
+				<div class="icone">
+					<svg class="w-24 h-24 grow-0 shrink-0">
+						<use xlink:href="#icone-Group"></use>
+					</svg>
+				</div>
+
+				<p>Link 1 </p>
+				<svg class="icon group-hover:opacity-100 icon-arrow">
+					<use xlink:href="#icone-arrow-left"></use>
+				</svg>
+			</a>
+		</li>
+
+		<li js-lista-name="hidden" class="hidden click-hidden"></li>
+	</ul>
+
+	<div class="m-16 flex flex-col gap-8">
+		{% if user.is_superuser %}
+			<a href="{% url 'admin:index' %}" target="_blank" js-lista-name="controladoria"
+				class="h-40 whitespace-nowrap menu-item group">
+				<p class="inline-flex text-white font-medium text-sm leading-100">Admin</p>
+			</a>
+		{% endif %}
+
+		{% if is_dev %}
+			<a href="{% url 'design_system' %}" target="_blank" js-lista-name="controladoria"
+				class="h-40 whitespace-nowrap menu-item group">
+				<p class="inline-flex text-white font-medium text-sm leading-100">Design System</p>
+			</a>
+
+			<a href="{% url 'svg_viewer' %}" target="_blank" js-lista-name="controladoria"
+				class="h-40 whitespace-nowrap menu-item group">
+				<p class="inline-flex text-white font-medium text-sm leading-100">SVG's</p>
+			</a>
+
+			<a href="{% url 'django-admindocs-docroot' %}" target="_blank" js-lista-name="controladoria"
+				class="h-40 whitespace-nowrap menu-item group">
+				<p class="inline-flex text-white font-medium text-sm leading-100">Admin docs</p>
+			</a>
+
+			<a href="{% url 'swagger' %}" target="_blank" js-lista-name="controladoria"
+				class="h-40 whitespace-nowrap menu-item group">
+				<p class="inline-flex text-white font-medium text-sm leading-100">API docs - Swagger</p>
+			</a>
+
+			<a href="{% url 'redoc' %}" target="_blank" js-lista-name="controladoria"
+				class="h-40 whitespace-nowrap menu-item group">
+				<p class="inline-flex text-white font-medium text-sm leading-100">API docs - Redoc</p>
+			</a>
+		{% endif %}
+	</div>
+
+	<div class="sidebar-footer ">
+		<div class="user ">
+			{% if user.is_authenticated %}
+				<a class="foto relative" href="#">
+					<svg class="icone-hover">
+						<use xlink:href="#icone-camera"></use>
+					</svg>
+				</a>
+			{% else %}
+				<a class="foto relative bg-primary-pure-light" href="#">
+					<svg class="icone-hover">
+						<use xlink:href="#icone-camera"></use>
+					</svg>
+				</a>
+			{% endif %}
+
+			<div class="user-info">
+				{% if user.get_full_name %}
+					<h3>{{user.get_full_name}}</h3>
+				{% else %}
+					<h3>Sem nome</h3>
+				{% endif %}
+			</div>
+		</div>
+
+		<div class="opcoes-container relative">
+			<div class="opcoes">
+				<a class="opcoes-link" href="{% url 'logout' %}">
+					<svg>
+						<use xlink:href="#icone-exit-login-logout"></use>
+					</svg>
+					Sair
+				</a>
+			</div>
+			<button type="button" class="botao-opcoes"
+				onclick="GLOBAL.toggleClassOnButtonClick('.opcoes-container','ativar')">
+				<svg>
+					<use xlink:href="#icone-dots"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
+</nav>
+<div class="nav-fundo"></div>
