@@ -1,0 +1,109 @@
+{% load static %}
+{% load home_tags %}
+{% is_dev as is_dev %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boilerplate | {{title}}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Tinos&display=swap" rel="stylesheet">
+
+    <!-- TOASTIFY -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="{% static 'front_assets/assets/dist/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'front_assets/assets/dist/css/tailwind.css' %}">
+    <!-- CHOICES -->
+    <script src="{% static 'front_assets/assets/src/vendor/choices.min.js' %}"></script>
+    <!-- Transform html table in xlsx -->
+    <!-- <script async type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.mini.min.js" integrity="sha512-NDQhXrK2pOCL18FV5/Nc+ya9Vz+7o8dJV1IGRwuuYuRMFhAR0allmjWdZCSHFLDYgMvXKyN2jXlSy2JJEmq+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Global scripts -->
+    <script src="{% static 'front_assets/assets/src/js/GLOBAL.js' %}"></script>
+    <script src="{% static 'front_assets/assets/src/vendor/gsap.min.js' %}"></script>
+    <script src="{% static 'front_assets/assets/src/vendor/apexcharts.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.41/vue.global.min.js"></script>
+
+    {% include 'sidebar_obj.html' %}
+    {% include 'notificacoes_bar.html' %}
+    {% block extra_styles_vendor %}
+    <!--  -->
+    {% endblock %}
+
+    <style>
+        .container-left.bg-login-section {
+            background-image: url("{% static 'front_assets/assets/src/images/bg-login.png' %}") !important;
+        }
+    </style>
+
+    {% block extra_styles %}
+    {% endblock %}
+
+</head>
+
+<body class="menu-closed dont-open-submenu notification-closed {% block body_class %} {% endblock %}">
+    {% include 'svg-defs.html' %}
+
+    <div class="flex">
+        {% include 'sidebar.html' %}
+
+        <div class="container-main">
+            {% block content %}
+
+            <!--  -->
+            {% endblock %}
+
+        </div>
+
+    </div>
+
+
+    <div class="loader--container" data-active="false">
+        <div class="loader--center loader"></div>
+        <p></p>
+    </div>
+
+	{% if request.content_params.app and request.content_params.model and is_dev %}
+        <div class="flex justify-end absolute right-20 mb-48 bottom-20">
+            <a href="{% url 'django-admindocs-models-detail' request.content_params.app request.content_params.model %}"
+                target="_blank" class="btn icon-left secondary h-56  rounded-[50%] !fixed">
+                <svg class="!w-[20px] !h-[20px]">
+                    <use xlink:href="#icon_btnRelatorio"></use>
+                </svg>
+            </a>
+        </div>
+	{% endif %}
+
+
+    <!-- TOASTIFY -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{% static 'front_assets/assets/src/vendor/jquery.min.js' %}"></script>
+
+    <!-- JQUERY MASK -->
+    <script src="{% static 'front_assets/assets/src/vendor/jquery.mask.min.js' %}"></script>
+
+    {% include 'script_toastify.html' %}
+
+    {% block extra_js %}
+    <!--  -->
+    {% endblock %}
+
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/esm/ionicons.min.js"> </script>
+    <script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/esm/ionicons.min.js"> </script>
+
+    <script type="text/javascript" src="{% static 'front_assets/assets/dist/js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'front_assets/assets/dist/js/main.js' %}"></script>
+
+    <script>
+        GLOBAL.scrollTopBar('.top-bar')
+    </script>
+</body>
+
+</html>
