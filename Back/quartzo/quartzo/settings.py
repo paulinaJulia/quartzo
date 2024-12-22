@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "avatar",
     "front_assets",
     "home",
+    'imovel',
     #
     # Libs
     "advanced_filters",
