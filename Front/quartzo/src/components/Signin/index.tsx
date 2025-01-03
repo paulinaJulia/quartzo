@@ -9,14 +9,16 @@ export const Signin = () =>{
     return(
         <Container>
            <div className="container">
-            <div className="container1">CONTAINER 1</div>
-                <div className="imagem">
+            <div className="container1">
+                <div className="image">
                     <img 
                     src="logo_quartzo.png" 
                     width={400}
                     height={400}
                     className="img-banner"
-                    alt="banner" />
+                    alt="banner" 
+                    />
+                    </div>
                 </div>
             <div className="container2">
                 <Form>
@@ -26,7 +28,7 @@ export const Signin = () =>{
                         <FilledInput
                             id="filled-adornment-weight"
                             className="input"
-                            placeholder="Login"
+                            placeholder="Usuário"
                             endAdornment={
                                 <InputAdornment position="end">
                                     <HiOutlineUser 
@@ -57,7 +59,7 @@ export const Signin = () =>{
                         />
                         <div className="buttom">
                             <Button variant="contained" className="buttom">
-                                Login
+                                Entrar
                             </Button>
                                 <div className="checkbox">
                                     <span>
@@ -68,7 +70,7 @@ export const Signin = () =>{
                         </div>
                         <div className="cad">
                             <p>
-                                Criar conta <a href="/">Cadastrar.</a>
+                                Criar conta:  <a href="/">Cadastrar-se.</a>
                             </p>
                         </div>
                 </Form>
