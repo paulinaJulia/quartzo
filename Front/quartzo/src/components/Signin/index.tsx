@@ -4,8 +4,12 @@ import FilledInput from "@mui/material/FilledInput";
 import { Button, InputAdornment } from "@mui/material";
 import { HiOutlineUser } from "react-icons/hi"
 import { SlLock } from "react-icons/sl"
+import { useNavigate } from "react-router-dom";
 
 export const Signin = () =>{
+
+    const navigate = useNavigate();
+
     return(
         <Container>
            <div className="container">
@@ -69,8 +73,18 @@ export const Signin = () =>{
                                 </div>
                         </div>
                         <div className="cad">
-                            <p>
-                                Criar conta:  <a href="/">Cadastrar-se.</a>
+                             <p>
+                                Criar conta:{" "}
+                                {/* Alteração: Usando onClick com navigate para redirecionar */}
+                                <a
+                                    href="#"
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Evita o comportamento padrão do link
+                                        navigate("/signup"); // Redireciona para a tela de cadastro
+                                    }}
+                                >
+                                    Cadastrar-se.
+                                </a>
                             </p>
                         </div>
                 </Form>

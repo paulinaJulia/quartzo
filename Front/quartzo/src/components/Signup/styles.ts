@@ -15,7 +15,7 @@ const moveToRight = keyframes`
   }
 `;
 
-const SignupContainer = styled.div`
+export const SignupContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
