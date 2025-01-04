@@ -196,7 +196,7 @@ export const Form = styled.div`
 export const Logo = styled.div`
   font-family: "Poppins", sans-serif;
   width: 60%;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 400;
   color: #0b0d17;
   margin: auto;

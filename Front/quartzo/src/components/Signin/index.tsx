@@ -23,8 +23,8 @@ export const Signin = () =>{
             <div className="container2">
                 <Form>
                     <Logo>
-                    </Logo>
                     <p>Login</p>
+                    </Logo>
                         <FilledInput
                             id="filled-adornment-weight"
                             className="input"
