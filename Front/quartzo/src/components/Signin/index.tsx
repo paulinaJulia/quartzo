@@ -33,7 +33,7 @@ export const Signin = () =>{
                                 <InputAdornment position="end">
                                     <HiOutlineUser 
                                     style={{
-                                        color: "#0563e7ba",
+                                        color: "#0B0D17",
                                         fontSize: "1.3rem",
                                     }}
                                     />
@@ -50,7 +50,7 @@ export const Signin = () =>{
                                 <InputAdornment position="end">
                                     <SlLock
                                     style={{
-                                        color: "#0563e7ba",
+                                        color: "#0B0D17",
                                         fontSize: "1.3rem",
                                     }}
                                     />
@@ -59,11 +59,11 @@ export const Signin = () =>{
                         />
                         <div className="buttom">
                             <Button variant="contained" className="buttom">
-                                Entrar
+                            Entrar
                             </Button>
                                 <div className="checkbox">
                                     <span>
-                                        <input type="checkbox" className="input-checkbox" />
+                                    <input type="checkbox" className="input-checkbox" />
                                     </span>
                                     <p>Lembrar senha.</p>
                                 </div>

@@ -1,26 +1,25 @@
 import styled, { keyframes } from "styled-components";
 
+// Animação de entrada
 const moveToRight = keyframes`
-
-0% {
-  opacity: 0;
-  transform: translate(-200px);
-
-}
-50%{
-  opacity: 3;
-}
-100%{
-
-  transform: translate(0px);
-  opacity: 1;
-}
-
+  0% {
+    opacity: 0;
+    transform: translate(-200px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0px);
+    opacity: 1;
+  }
 `;
 
+// Container principal
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+
   .container {
     display: flex;
     flex-direction: row;
@@ -30,20 +29,16 @@ export const Container = styled.div`
 
   .container1 {
     width: 60%;
-    background-image: radial-gradient(
-      circle at 50% 50%,
-      #FFFFFF 0,
-      #014D4E 50%,
-      #080D17 100%
-    );
     box-shadow: 1px 2px 3px #ccc;
     height: 100vh;
   }
+
   @media (max-width: 999px) {
     .container1 {
       display: none;
     }
   }
+
   .image {
     margin: auto;
     align-items: center;
@@ -53,6 +48,7 @@ export const Container = styled.div`
     height: 100%;
     animation: ${moveToRight} 0.5s;
   }
+
   .container2 {
     width: 40%;
     display: flex;
@@ -61,6 +57,7 @@ export const Container = styled.div`
     height: 100vh;
     height: 100%;
   }
+
   @media (max-width: 999px) {
     .container2 {
       width: 90%;
@@ -68,6 +65,7 @@ export const Container = styled.div`
   }
 `;
 
+// Formulário e botões
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
@@ -84,21 +82,18 @@ export const Form = styled.div`
     margin-bottom: 1rem;
     animation: ${moveToRight} 0.5s;
   }
+
   @media (max-width: 999px) {
     width: 100%;
     height: 65vh;
-    background-image: radial-gradient(
-      circle at 50% 50%,
-      #486ee5 0,
-      #486ee5 50%,
-      #00439b 100%
-    );
+    background-image: radial-gradient(circle at 50% 50%, #0b0d17 0, #0b0d17 100%);
     border-radius: 30px;
+
     .input {
       width: 80%;
-      animation: ${moveToRight} 0.5s;
     }
   }
+
   .checkbox {
     align-items: center;
     display: flex;
@@ -107,15 +102,18 @@ export const Form = styled.div`
     width: 100%;
     justify-content: end;
     animation: ${moveToRight} 0.5s;
+
     p {
       font-size: 1.2rem;
-      color: #cccc;
+      color: #0b0d17;
     }
   }
+
   .input-checkbox {
     margin-right: 5px;
     margin-bottom: -4px;
   }
+
   .bottom {
     width: 60%;
     margin-top: 1.3rem;
@@ -123,34 +121,56 @@ export const Form = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 1rem; /* Espaçamento entre os botões */
   }
-  @media (max-width: 999px) {
-    .bottom {
-      width: 80%;
-    }
-    .buttom {
-      background: #fc750f;
-    }
-    .checkbox p {
-      color: #fff;
-    }
-  }
+
   .buttom {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
-    padding: 0 30px;
+    padding: 0 20px;
     height: 40px;
+    background: #0b0d17;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #014d4e; /* Cor ao passar o mouse */
+    }
   }
+
+  @media (max-width: 1500px) {
+    .bottom {
+      width: 80%;
+    }
+
+    .checkbox p {
+      color: #0b0d17;
+    }
+  }
+
   .cad {
-    margin-top: 1.2rem;
+    margin-top: 1.8rem;
+
     p {
       font-size: 1.2rem;
-      color: #cccc;
+      color: #0b0d17;
     }
+
     a {
-      color: #486ee5;
+      color: #0b0d17;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
+
   @media (max-width: 999px) {
     .cad {
       width: 85%;
@@ -161,22 +181,24 @@ export const Form = styled.div`
         font-size: 1rem;
         margin-top: 1rem;
         text-align: center;
-        color: #fff;
+        color: #0b0d17;
       }
+
       a {
         font-weight: 500;
-        color: #fc750f;
+        color: #0b0d17;
       }
     }
   }
 `;
 
+// Logo
 export const Logo = styled.div`
   font-family: "Poppins", sans-serif;
   width: 60%;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 400;
-  color: #486ee5;
+  color: #0b0d17;
   margin: auto;
   justify-content: center;
 
@@ -184,6 +206,7 @@ export const Logo = styled.div`
     margin-top: -1rem;
     animation: ${moveToRight} 0.5s;
   }
+
   @media (max-width: 999px) {
     width: 100%;
     margin: auto;
@@ -194,7 +217,7 @@ export const Logo = styled.div`
       font-size: 2.5rem;
       margin-top: 0;
       animation: ${moveToRight} 0.5s;
-      color: #fff;
+      color: #0b0d17;
     }
   }
 `;
