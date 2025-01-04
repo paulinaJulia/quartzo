@@ -12,9 +12,9 @@ export const Signin = () =>{
             <div className="container1">
                 <div className="image">
                     <img 
-                    src="logo_quartzo.png" 
-                    width={400}
-                    height={400}
+                    src="controle-financeiro-imobiliaria.jpg" 
+                    width={1155}
+                    height={1000}
                     className="img-banner"
                     alt="banner" 
                     />

@@ -16,7 +16,6 @@ const moveToRight = keyframes`
   opacity: 1;
 }
 
-
 `;
 
 export const Container = styled.div`
@@ -33,9 +32,9 @@ export const Container = styled.div`
     width: 60%;
     background-image: radial-gradient(
       circle at 50% 50%,
-      #8a9cff 0,
-      #4876e5 50%,
-      #00439b 100%
+      #FFFFFF 0,
+      #014D4E 50%,
+      #080D17 100%
     );
     box-shadow: 1px 2px 3px #ccc;
     height: 100vh;
