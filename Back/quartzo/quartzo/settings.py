@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "front_assets",
     "home",
     'imovel',
+    "financeiro",
     #
     # Libs
     "advanced_filters",
