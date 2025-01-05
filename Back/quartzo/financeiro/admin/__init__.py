@@ -1,2 +1,5 @@
+from .contrato_admin import ContratoAdmin
 
-__all__ = []
+__all__ = [
+    ContratoAdmin,
+]
