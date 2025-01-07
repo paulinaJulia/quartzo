@@ -21,7 +21,22 @@ export const SignupContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #0b0d17;
+
+  .logo-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        max-width: 150px;
+        height: auto;
+    }
+
+    .form {
+        /* Resto do estilo do formulário */
+    }
 
   .form {
     width: 100%;
@@ -32,7 +47,7 @@ export const SignupContainer = styled.div`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     .input {
-      width: 100%;
+      width: 95%;
       padding: 10px;
       margin-bottom: 15px;
       border: 1px solid #ccc;
@@ -43,7 +58,7 @@ export const SignupContainer = styled.div`
     .button {
       width: 100%;
       padding: 10px;
-      background-color: #014d4e;
+      background-color: #A8D5BA;
       color: white;
       border: none;
       border-radius: 4px;
@@ -53,7 +68,7 @@ export const SignupContainer = styled.div`
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #012c2c;
+        background-color: #0b0d17;
       }
     }
 

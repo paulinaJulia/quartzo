@@ -17,7 +17,7 @@ export const Signin = () =>{
                 <div className="image">
                     <img 
                     src="controle-financeiro-imobiliaria.jpg" 
-                    width={1155}
+                    width={900}
                     height={1000}
                     className="img-banner"
                     alt="banner" 

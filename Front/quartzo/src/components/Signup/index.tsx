@@ -17,16 +17,23 @@ export const Signup: React.FC = () => {
             return;
         }
 
-        // Simula o cadastro
         console.log("Usuário cadastrado com sucesso:", { name, email, password });
         setError("");
         alert("Cadastro realizado com sucesso!");
-        navigate("/"); // Redireciona para a tela de login após o cadastro
+        navigate("/"); 
     };
 
     return (
         <SignupContainer>
             <form className="form" onSubmit={handleSignup}>
+                {/* Logo da empresa */}
+                <div className="logo-container">
+                    <img
+                        src="logo_quartzo.png"
+                        alt="Logo da Empresa"
+                        className="logo"
+                    />
+                </div>
                 <h2>Cadastro</h2>
                 <input
                     type="text"
@@ -53,8 +60,14 @@ export const Signup: React.FC = () => {
                     Cadastrar
                 </button>
                 {error && <p className="error">{error}</p>}
-                <p className="login" onClick={() => navigate("/")}>
-                    Já tem uma conta? Faça login
+                <p className="login">
+                    Já tem uma conta?{" "}
+                    <span
+                        onClick={() => navigate("/")}
+                        style={{ cursor: "pointer", color: "#0b0d17", textDecoration: "underline" }}
+                    >
+                        Faça login
+                    </span>
                 </p>
             </form>
         </SignupContainer>
