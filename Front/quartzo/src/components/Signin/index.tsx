@@ -52,7 +52,7 @@ export const Signin = () => {
                         <img
                             src="controle-financeiro-imobiliaria.jpg"
                             width={900}
-                            height={1000}
+                            height={700}
                             className="img-banner"
                             alt="banner"
                         />
