@@ -3,30 +3,52 @@ import { SignupContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 
 export const Signup: React.FC = () => {
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSignup = (e: React.FormEvent) => {
+    const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!name || !email || !password) {
+        if (!username || !email || !password) {
             setError("Por favor, preencha todos os campos.");
             return;
         }
 
-        console.log("Usuário cadastrado com sucesso:", { name, email, password });
-        setError("");
-        alert("Cadastro realizado com sucesso!");
-        navigate("/"); 
+        try {
+            const response = await fetch("http://127.0.0.1:8000/user_register/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password,
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Usuário cadastrado com sucesso:", data);
+                alert("Cadastro realizado com sucesso!");
+                navigate("/"); // Redireciona para a tela de login
+            } else {
+                const errorData = await response.json();
+                console.error("Erro ao cadastrar:", errorData);
+                setError(errorData.message || "Erro ao realizar o cadastro. Tente novamente.");
+            }
+        } catch (error) {
+            console.error("Erro na requisição:", error);
+            setError("Erro ao conectar com o servidor.");
+        }
     };
 
     return (
         <SignupContainer>
             <form className="form" onSubmit={handleSignup}>
-                {/* Logo da empresa */}
                 <div className="logo-container">
                     <img
                         src="logo_quartzo.png"
@@ -38,9 +60,9 @@ export const Signup: React.FC = () => {
                 <input
                     type="text"
                     className="input"
-                    placeholder="Nome"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Nome de Usuário"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
                     type="email"
@@ -64,7 +86,11 @@ export const Signup: React.FC = () => {
                     Já tem uma conta?{" "}
                     <span
                         onClick={() => navigate("/")}
-                        style={{ cursor: "pointer", color: "#0b0d17", textDecoration: "underline" }}
+                        style={{
+                            cursor: "pointer",
+                            color: "#0b0d17",
+                            textDecoration: "underline",
+                        }}
                     >
                         Faça login
                     </span>
