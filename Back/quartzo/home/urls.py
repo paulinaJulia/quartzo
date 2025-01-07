@@ -1,5 +1,6 @@
 from django.urls import include, path
 from home import views, viewsets
+from home.views import LoginView, RegisterView
 from rest_framework import routers
 
 home_router = routers.DefaultRouter()
@@ -20,4 +21,6 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("design_system/", views.design_system, name="design_system"),
     path("svg_viewer/", views.svg_viewer, name="svg_viewer"),
+    path('user_register/', RegisterView.as_view(), name='register'),
+    path('user_login/', LoginView.as_view(), name='login'),
 ]

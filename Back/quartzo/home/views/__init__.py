@@ -1,3 +1,4 @@
+from .auth_view import LoginView, RegisterView
 from .design_system import design_system
 from .errors import error_403, error_404, error_500
 from .home import home
