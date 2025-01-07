@@ -6,6 +6,7 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
                                    SpectacularSwaggerView)
+from financeiro.viewsets import ContratoViewSet
 from imovel.viewsets import ImovelViewSet
 from rest_framework import routers
 
@@ -16,6 +17,13 @@ main_router.register(
     ImovelViewSet,
     "imovel",   
 )
+
+main_router.register(
+    "contrato",
+    ContratoViewSet,
+    "contrato",   
+)
+
 
 urlpatterns = [
     path("admin/docs/", include("django.contrib.admindocs.urls")),
