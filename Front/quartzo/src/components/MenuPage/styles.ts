@@ -7,7 +7,7 @@ export const Container = styled.div`
     justify-content: space-between;
     min-height: 100vh;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #C9DFF2;
     font-family: Arial, sans-serif;
 `;
 
@@ -44,18 +44,18 @@ export const Button = styled.button`
     margin: 10px 0;
     font-size: 1rem;
     color: white;
-    background-color: #007bff;
+    background-color: #014D4E;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: #0056b3;
+        background-color: #0B0D17;
     }
 
     &:active {
-        background-color: #00408b;
+        background-color: #0B0D17;
     }
 `;
 
@@ -70,4 +70,27 @@ export const Footer = styled.footer`
     p {
         font-size: 0.9rem;
     }
+
+`;
+
+export const ThemeSwitcher = styled.div`
+    margin-top: auto;
+    text-align: center;
+
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #0056b3; 
+        }
+
+        
+        outline: none;
+        box-shadow: none; 
 `;
