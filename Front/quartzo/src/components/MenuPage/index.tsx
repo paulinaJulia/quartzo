@@ -1,17 +1,35 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Container, Header, Section, Button, Footer } from "./styles";
 
 export const MenuPage: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <div>
-            <h1>Bem-vindo ao Sistema de Gestão de Imóveis</h1>
-            <button onClick={() => navigate("/cadastrar-imovel")}>Cadastrar Imóvel</button>
-            <button onClick={() => navigate("/editar-imoveis")}>Editar Imóveis</button>
-            <button onClick={() => navigate("/remover-imoveis")}>Remover Imóveis</button>
-            <button onClick={() => navigate("/renovar-contratos")}>Renovar Contratos</button>
-            <button onClick={() => navigate("/gerar-relatorios")}>Gerar Relatórios</button>
-        </div>
+        <Container>
+            <Header>
+                <h1>Quartzo - Gestão Imobiliária</h1>
+                <p>Seu sistema completo para gerenciar imóveis e contratos com eficiência.</p>
+            </Header>
+
+            <Section>
+                <h2>Gestão de Imóveis</h2>
+                <Button onClick={() => navigate("/cadastrar-imovel")}>Cadastrar Imóvel</Button>
+                <Button onClick={() => navigate("/editar-imoveis")}>Editar Imóveis</Button>
+                <Button onClick={() => navigate("/remover-imoveis")}>Remover Imóveis</Button>
+            </Section>
+
+            <Section>
+                <h2>Contratos e Relatórios</h2>
+                <Button onClick={() => navigate("/renovar-contratos")}>Renovar Contratos</Button>
+                <Button onClick={() => navigate("/gerar-relatorios")}>Gerar Relatórios</Button>
+            </Section>
+
+            <Footer>
+                <p>
+                    © {new Date().getFullYear()} Quartzo. Todos os direitos reservados.
+                </p>
+            </Footer>
+        </Container>
     );
 };
