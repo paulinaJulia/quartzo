@@ -30,4 +30,4 @@ static3==0.7.0
 twine
 wheel
 django-advanced-filters
-django-cors-headers==4.6.0
+django-cors-headers
