@@ -10,7 +10,14 @@ Este tutorial irá orientar você na instalação das seguintes bibliotecas esse
 * **@emotion/styled:** Biblioteca para criação de componentes estilizados com a Emotion.
 * **react-router-dom:** É uma biblioteca para criar aplicações React com múltiplas páginas ou "rotas". Ela permite que você navegue entre diferentes partes do seu aplicativo de forma fácil e intuitiva, criando uma experiência de usuário mais rica e similar à de um site tradicional.
 
-## 1. Instalação das Bibliotecas
+## 1 Pré Requisitos
+
+```
+Node=v21.7.3
+NPM=10.5.0
+```
+
+## 2 Instalação das Bibliotecas
 
 Abra o terminal em seu projeto React e execute os seguintes comandos:
 
