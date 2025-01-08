@@ -32,7 +32,8 @@ export const Signin = () => {
                     localStorage.setItem("token", data.token);
                 }
 
-                navigate("/dashboard");
+                // Redireciona para a página principal após login bem-sucedido
+                navigate("/main");
             } else {
                 const errorData = await response.json();
                 console.error("Erro ao fazer login:", errorData);

@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Signin } from "./components/Signin";
 import { Signup } from "./components/Signup";
-import { MainPage } from "./components/Menu"; // Importa a página principal
+import { MenuPage } from "./components/MenuPage"; // Importa a página principal
+import { Menu } from "@mui/material";
 // import { CadastrarImovel } from "./components/CadastrarImovel"; // Criar este componente
 // import { EditarImoveis } from "./components/EditarImoveis"; // Criar este componente
 // import { RemoverImoveis } from "./components/RemoverImoveis"; // Criar este componente
@@ -19,7 +20,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
 
                 {/* Rota para a página principal */}
-                <Route path="/main" element={<MainPage />} />
+                <Route path="/main" element={<MenuPage />} />
 
                 {/* Rotas para funcionalidades específicas
                 <Route path="/cadastrar-imovel" element={<CadastrarImovel />} />

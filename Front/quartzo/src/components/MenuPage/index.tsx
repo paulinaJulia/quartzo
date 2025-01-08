@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const MainPage: React.FC = () => {
+export const MenuPage: React.FC = () => {
     const navigate = useNavigate();
 
     return (
