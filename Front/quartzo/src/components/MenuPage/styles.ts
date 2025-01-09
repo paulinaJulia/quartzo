@@ -72,25 +72,3 @@ export const Footer = styled.footer`
     }
 
 `;
-
-export const ThemeSwitcher = styled.div`
-    margin-top: auto;
-    text-align: center;
-
-    button {
-        padding: 10px 20px;
-        font-size: 1rem;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #0056b3; 
-        }
-
-        
-        outline: none;
-        box-shadow: none; 
-`;
