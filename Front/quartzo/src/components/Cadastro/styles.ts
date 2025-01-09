@@ -6,7 +6,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #C9DFF2;
     min-height: 100vh;
 `;
 
@@ -64,7 +64,7 @@ export const Select = styled.select`
 export const Button = styled.button`
     padding: 10px 15px;
     border: none;
-    background-color: #007bff;
+    background-color: #014D4E;
     color: #fff;
     font-size: 16px;
     border-radius: 4px;
@@ -72,7 +72,7 @@ export const Button = styled.button`
     margin-top: 10px;
 
     &:hover {
-        background-color: #0056b3;
+        background-color: #0B0D17;
     }
 
     &:not(:last-child) {
