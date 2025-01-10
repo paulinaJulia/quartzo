@@ -1,0 +1,5 @@
+@layer components{
+  .header{
+    @apply bg-neutral-500;
+  }
+}

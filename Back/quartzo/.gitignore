@@ -1,0 +1,13 @@
+# Não manda os bancos
+*.sqlite3
+
+# Não manda os arquivos cache do Python
+*pyc
+
+.env
+
+media
+
+node_modules
+package-lock.json
+.parcel-cache

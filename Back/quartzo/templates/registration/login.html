@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block body_class %}{% endblock %}
+
+
+{% block extra_styles %}
+<style>
+  .container-left {
+    background-image: url("{% static 'home/assets/src/images/bg-login.png' %}") !important;
+  }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<form method="post" action="">
+  {% csrf_token %}
+
+  <div class="grid-template">
+    <div class="container-left bg-login-section">
+      <img class="mx-auto" src="{% static 'home/assets/src/images/logo-novadata.png' %}">
+    </div>
+    <div class="container-right">
+      <!--login-->
+      <div class="form-box rounded-lg p-32 border border-neutral-10 shadow-lg bg-white w-[25rem]" js-animate>
+        <div class="titulo">
+          <h2 class="text-primary-pure text-[2rem] font-semibold leading-150 tracking-tight">Fazer login</h2>
+          <p class="mt-16 text-base text-neutral-50 font-medium leading-140">Seja bem-vindo(a)! Insira seu e-mail e
+            senha para entrar em sua conta.</p>
+        </div>
+
+        <div class="formulario-wrapper flex flex-col gap-32">
+          <div class="inputs-container flex flex-col gap-24 mt-48 ">
+            <div class="input-box flex flex-col gap-4 w-full">
+              <label class="label block text-neutral-black-o-6">Email</label>
+              {{form.username|add_class:'input-text h-48 w-full'|attr:'placeholder:insira seu email'|attr:'js-ativo'}}
+            </div>
+            <div class="input-box flex flex-col gap-4 w-full">
+              <label class="label block text-neutral-black-o-6">Senha</label>
+              <div class="input-icon">
+                <div class="show-password" js-password>
+                  {{form.password|add_class:'input-text h-48'|attr:'js-input-password'|attr:'placeholder:insira sua senha'|attr:'js-ativo'}}
+                  <div class="password">
+                    <ion-icon class="eye" name="eye-outline"></ion-icon>
+                    <ion-icon class="eye-off" name="eye-off-outline"></ion-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="recuperar-senha">
+                <a href="{% url 'password_reset' %}"
+                  class="text-neutral-60 font-semibold tracking-tight leading-140 appearance-none text-sm hover:underline">
+                  Esqueceu a senha?
+                </a>
+              </div>
+            </div>
+            {{form.non_field_errors}}
+          </div>
+        </div>
+
+        <div class="checkbox-wrapper flex items-center justify-between mt-24">
+          <div class="radio-container round size-16 flex items-center">
+            <label class="check-label text-sm">
+              <input type="checkbox" class="sr-only">
+              <span class="radio-circle">
+                <i class="radio-circle-inner"></i>
+              </span>
+              Permanecer conectado
+            </label>
+          </div>
+        </div>
+
+        <div class="btn-container  mt-32">
+          <button class="btn icon-left h-48 w-full">
+            Entrar na conta
+            <svg>
+              <use xlink:href="#icon_btnEntrar"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  function removePadding() {
+    const container = document.querySelector('.container-main')
+    container && (container.style.paddingLeft = '0px')
+  }
+
+  (function init() {
+    removePadding()
+    GLOBAL.removeSidebar() // Global
+  })()
+</script>
+{% endblock %}

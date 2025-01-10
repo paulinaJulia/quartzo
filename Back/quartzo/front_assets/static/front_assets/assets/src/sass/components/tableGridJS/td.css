@@ -1,0 +1,15 @@
+td.gridjs-td {
+  border: 1px solid #e5e7eb;
+  padding: 12px 24px;
+  background-color: #fff;
+  box-sizing: content-box;
+}
+td.gridjs-td:first-child {
+  border-left: none;
+}
+td.gridjs-td:last-child {
+  border-right: none;
+}
+td.gridjs-message {
+  text-align: center;
+}/*# sourceMappingURL=td.css.map */

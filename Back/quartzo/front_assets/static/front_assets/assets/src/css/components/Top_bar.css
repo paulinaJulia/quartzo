@@ -1,0 +1,54 @@
+@layer components {
+  .top-bar {
+    @apply py-8 bg-white border-b border-borda-10 fixed w-full z-[10] px-64 md2:!left-0 md2:pr-12 md2:pl-0;
+    left: var(--width-menu-closed);
+    transition: .3s ease;
+
+    &.scrollou{
+      @apply py-2;
+
+        .logo-mobile{
+          transform: scale(0.8);
+        }
+         .acoes{
+            transform: scale(0.8);
+         }
+
+        .breadcrumb{
+          transform: scale(0.9);
+        }
+    }
+
+    .container-bar {
+      @apply h-full;
+    }
+
+    .top-bar-wrapper {
+      @apply flex items-center justify-between md2:justify-start h-full pr-80 md2:pr-0;
+    }
+
+
+
+    .logo-mobile{
+      transition: transform .3s ease;
+    }
+
+    .acoes {
+      @apply md2:order-3 md2:ml-auto;
+      transition: transform .3s ease;
+
+    }
+
+    .botao-notificacao {
+      @apply border border-borda-10 w-48 h-48 flex items-center justify-center rounded-full cursor-pointer hover:border-primary-pure transition-all;
+
+      &.has-notifications {
+        --cor-notificacao: #EC3539;
+      }
+
+      svg {
+        @apply w-[24px] h-[24px];
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@layer components {
+	.input-toogle {
+		label {
+			span {
+				@apply w-40 h-20  bg-primary-pure-light-o rounded-[1.5rem] border inline-flex cursor-pointer transition  border-transparent relative bg-white;
+			}
+
+			i {
+				@apply w-20 h-20 rounded-full transition absolute top-0 bottom-0 my-auto left-0 block  scale-105  bg-neutral-70;
+			}
+			input:checked ~ span {
+				@apply bg-primary-pure-light-o;
+
+				i {
+					@apply translate-x-full bg-primary-pure;
+				}
+			}
+		}
+		&.inverse {
+			label {
+				span {
+					@apply border-neutral-40;
+				}
+			}
+
+			input:checked ~ span {
+				@apply border-primary-pure;
+			}
+		}
+
+		&.sm {
+			label {
+				span {
+					@apply w-48 h-24;
+					i {
+						@apply w-24 h-24;
+					}
+				}
+			}
+		}
+
+		&.md {
+			label {
+				span {
+					@apply w-56 h-[1.75rem];
+					i {
+						@apply w-[1.75rem] h-[1.75rem];
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,50 @@
+th.gridjs-th {
+  position: relative;
+  color: #6b7280;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  padding: 14px 24px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  box-sizing: border-box;
+  white-space: nowrap;
+  outline: none;
+  vertical-align: middle;
+}
+th.gridjs-th .gridjs-th-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+  float: left;
+}
+th.gridjs-th-sort {
+  cursor: pointer;
+}
+th.gridjs-th-sort .gridjs-th-content {
+  width: calc(100% - 15px);
+}
+th.gridjs-th-sort:hover {
+  background-color: #e5e7eb;
+}
+th.gridjs-th-sort:focus {
+  background-color: #e5e7eb;
+}
+th.gridjs-th-fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  box-shadow: 0 1px 0 0 #e5e7eb;
+}
+@supports (-moz-appearance: none) {
+  th.gridjs-th-fixed {
+    box-shadow: 0 0 0 1px #e5e7eb;
+  }
+}
+th.gridjs-th:first-child {
+  border-left: none;
+}
+th.gridjs-th:last-child {
+  border-right: none;
+}/*# sourceMappingURL=th.css.map */

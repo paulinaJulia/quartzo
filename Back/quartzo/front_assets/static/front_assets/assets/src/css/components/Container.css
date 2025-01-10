@@ -1,0 +1,10 @@
+@layer components {
+
+	.container-main {
+		@apply pl-[var(--width-menu-closed)]  mx-auto w-full md2:pl-0 relative;
+		transition:0.2s ease margin;
+	}
+	.container-content {
+		@apply relative max-w-[1448px] 2xl:max-w-[1256px] lg:max-w-[1112px] mx-auto mt-120 mb-24 md2:mt-[7.5rem] md2:mb-48 sm:my-40 px-48 md2:px-12 2xl:mt-96; 
+	}
+}

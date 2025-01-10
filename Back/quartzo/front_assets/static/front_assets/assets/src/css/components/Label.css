@@ -1,0 +1,31 @@
+@layer components {
+	.label {
+		@apply text-neutral-80 tracking-tight font-medium text-sm mb-4;
+
+		&.filled {
+			@apply text-neutral-80;
+		}
+
+		&.primary {
+			@apply text-primary-pure;
+		}
+		&.error {
+			@apply text-alert-red-100;
+		}
+		&.disabled{
+			@apply pointer-events-none select-none text-neutral-30;
+		}
+		&.sucess{
+			@apply text-alert-green-100;
+		}
+		
+	}
+	.label-icon{
+		@apply flex items-center justify-between gap-8;
+
+		svg {
+			@apply w-16 h-16;
+		}	
+			
+	}
+}

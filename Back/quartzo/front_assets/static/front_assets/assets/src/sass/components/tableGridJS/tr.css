@@ -1,0 +1,9 @@
+.gridjs-tr {
+  border: none;
+}
+.gridjs-tr-selected td {
+  background-color: #ebf5ff;
+}
+.gridjs-tr:last-child td {
+  border-bottom: 0;
+}/*# sourceMappingURL=tr.css.map */

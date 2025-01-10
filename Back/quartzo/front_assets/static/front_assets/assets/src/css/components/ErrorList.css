@@ -1,0 +1,21 @@
+@layer components {
+    .errorlist {
+        @apply flex flex-wrap gap-24 mx-0;
+
+        li {
+            @apply text-neutral-80 font-semibold;
+
+            ul {
+                &.errorlist {
+                    @apply m-0 gap-0;
+                }
+                li {
+                    @apply font-medium !normal-case text-neutral-70;
+                    
+                }  
+            }
+        }
+    }
+
+}
+

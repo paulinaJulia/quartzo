@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+	.svgs-wrapper svg {
+		width: 48px;
+		height: 48px;
+	}
+</style>
+<p class="flex justify-center mt-48 text-neutral-80 mb-24">Clique para copiar o ID</p>
+<div class="card m-24 p-24 svgs-wrapper text-neutral-80 flex flex-wrap gap-32">
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+	const svgHidden = document.querySelector("svg[aria-hidden='true']")
+	const defs = [...svgHidden.querySelectorAll("symbol")]
+	const svgsWrapper = document.querySelector(".svgs-wrapper")
+	const template = defs.map(i => {
+		const id = i.id
+
+		return `
+		<div style="min-width: 22%;" class="border border-neutral-10 rounded-md grid place-items-center hover:bg-neutral-10 transition px-4 py-8 cursor-pointer" onClick="copyTextToClipboard('#${id}')">
+			<svg><use xlink:href="#${id}"></use></svg>
+			<p class="text-sm text-neutra-80 font-medium">#${id}</p>
+		</div>
+		`
+	})
+	svgsWrapper.innerHTML = template.join("")
+
+
+	function copyTextToClipboard(text) {
+		// Verificação para saber se o navegador tem a biblioteca clipboard
+		if (!navigator.clipboard) return
+
+		navigator.clipboard.writeText(text).then(function () {
+			Toastify({
+				text: " Copiado Com Sucesso !!! 😘",
+			}).showToast();
+		}, function (err) {
+			console.error('Async: Could not copy text: ', err);
+		});
+	}
+</script>
+{% endblock %}

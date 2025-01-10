@@ -1,0 +1,68 @@
+
+<div class="fundo-alerta"></div>
+<div class="fixed h-screen top-0 right-0 z-[1001]">
+  <div class="alertas">
+    <div class="alertas-header">
+      <h3 class="titulo">Últimas atualizações</h3>
+      <div class="icone" js-notification-close>
+        <svg class="">
+          <use xlink:href="#icone-close"></use>
+        </svg>
+        <!-- <svg class="w-48 h-24 loading">
+          <use xlink:href="#icone-refresh"></use>
+        </svg> -->
+      </div>
+
+    </div>
+
+    <div class=" flex justify-center items-center absolute top-0 bottom-0 left-0 right-0">Não há atualizações...</div>
+
+
+  </div>
+
+</div>
+</div>
+<!-- 
+<script>
+
+  const botaoVisualizar = document.querySelectorAll("[js-action-notification]")
+  const botaoLimpar = document.querySelector("[js-clean-notification]")
+  const urlAtual = window.location.href;
+  
+  async function removeAllNotifications(e){
+    e.preventDefault();
+    const response = await fetch('/notificacoes/limpar_notificacoes/');
+    if(!response.ok) return
+    window.location.reload();
+  
+  }
+  
+  async function responseIsOk(dados){
+    const response = await fetch(dados.url);
+    if(!response.ok){
+      window.location.href = '?mensagem_toastify=O objeto referente já foi removido!'
+      return
+    }
+    window.location.href = dados.url;
+    
+  }
+  
+  async function getResponse({currentTarget}){
+    const id = currentTarget.getAttribute('data-id');
+    const response = await fetch(`/notificacoes/visualizar-notificacao/${id}`)
+      const data = await response.json();
+      checkIsUrlDetail(data)
+    }
+    
+  function checkIsUrlDetail(dados){
+    if(dados.has_link_detail == false){
+        window.location.href = '?mensagem_toastify=Notificação deletada com sucesso!'
+        return
+      } else{
+        responseIsOk(dados)
+      }
+    }
+    
+   botaoLimpar && botaoLimpar.addEventListener('click', removeAllNotifications)
+   botaoVisualizar && botaoVisualizar.forEach(i => i.addEventListener('click',getResponse))
+  </script> -->

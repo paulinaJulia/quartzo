@@ -1,0 +1,55 @@
+@layer components {
+	.accordion {
+		@apply border-t border-b border-neutral-20 bg-neutral-10;
+
+		& + .accordion {
+			margin-top: -1px;
+		}
+
+		&.inverse {
+			@apply border-neutral-20 bg-white;
+			&-title {
+				@apply hover:!bg-neutral-10;
+			}
+		}
+
+		&-item {
+			&.active {
+				svg {
+					@apply rotate-0;
+				}
+			}
+		}
+		svg {
+			@apply transition-transform w-16 h-16 rotate-180;
+		}
+
+		&-title {
+			@apply flex items-center gap-8 text-neutral-70 text-sm font-medium tracking-tight	py-10 px-14 relative cursor-pointer transition hover:bg-neutral-10;
+
+			&.icon-left {
+				@apply pl-40;
+				svg {
+					@apply absolute top-0 bottom-0 left-16 my-auto;
+				}
+			}
+			&.icon-right {
+				@apply pr-40;
+				svg {
+					@apply absolute top-0 bottom-0 right-16 my-auto;
+				}
+			}
+		}
+
+		&-content {
+			@apply overflow-hidden h-0;
+			&.active {
+				@apply h-auto;
+			}
+		}
+
+		.accordion-container {
+			@apply text-sm font-normal tracking-tight p-14 text-neutral-60;
+		}
+	}
+}

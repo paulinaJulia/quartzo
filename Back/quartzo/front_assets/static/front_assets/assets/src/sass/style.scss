@@ -1,0 +1,10 @@
+// @import "./utilities/reset";
+@import "./variaveis.scss";
+@import "./components/modalX";
+// @import "./components/dataTables/datatables.jquery";
+@import "./components/choices";
+@import "./components/tableGridJS/index";
+@import "./components/filepond";
+@import "./components/loader-battle.net.scss";
+
+@include ModalX("modal_padrao");

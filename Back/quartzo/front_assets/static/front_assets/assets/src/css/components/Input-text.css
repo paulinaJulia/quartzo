@@ -1,0 +1,86 @@
+@layer components {
+	.input-text {
+		@apply bg-white text-neutral-60 text-sm py-14 px-14 border border-neutral-10 rounded-md ring-transparent ring-0 relative transition-colors duration-200 h-40 leading-150 outline-none;
+
+		&.h-56 {
+			@apply text-base;
+		}
+
+		~svg {
+			@apply text-neutral-60;
+		}
+
+		&.inverse {
+			@apply bg-neutral-10;
+		}
+
+		&.invalido {
+			@apply border-negative;
+		}
+
+
+
+		&:hover {
+			@apply border-neutral-30;
+		}
+
+		&.active {
+			@apply border-neutral-60;
+		}
+
+		&:-webkit-autofill {
+			-webkit-box-shadow: 0 40px 0 0 white inset !important;
+			font-size: 1rem;
+
+			/* Cor do texto do autocomplete */
+			-webkit-text-fill-color: #4D4D4D;
+			/* font-family: "Be Vietnam Pro", sans-serif !important; */
+		}
+
+		&:focus-within {
+			@apply !border-primary-pure;
+
+			~svg {
+				@apply !text-primary-pure;
+			}
+		}
+
+		&::placeholder {
+			@apply text-neutral-60 font-normal text-sm;
+		}
+
+		&.disabled {
+			@apply pointer-events-none select-none bg-neutral-10;
+
+			&::placeholder {
+				@apply text-neutral-50;
+			}
+		}
+	}
+
+	.input-icon {
+		@apply h-max relative;
+
+		.input-text {
+			@apply pr-40 w-full;
+		}
+
+		svg {
+			@apply right-12 absolute top-0 bottom-0 my-auto w-20 h-20;
+		}
+
+		&.icon-left {
+			.input-text {
+				@apply pr-12 pl-40;
+			}
+
+			svg {
+				@apply left-12 right-[initial] absolute top-0 bottom-0 my-auto w-20 h-20;
+			}
+		}
+	}
+
+	.input-readonly {
+		@apply text-lg text-neutral-80 font-normal bg-transparent appearance-none;
+	}
+}

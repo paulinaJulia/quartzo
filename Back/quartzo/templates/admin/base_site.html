@@ -1,0 +1,12 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+{% load templates_tags_admin %}
+
+{% block branding %}
+{% customizados_logo_admin as customizados_logo_admin %}
+{% if customizados_logo_admin %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}"><img height="45px;" src="{{customizados_logo_admin.logo.url}}"></a></h1>
+{% else %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endif %}
+{% endblock %}

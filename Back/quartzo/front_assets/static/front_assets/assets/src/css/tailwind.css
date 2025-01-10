@@ -1,0 +1,53 @@
+@import "tailwindcss/base";
+
+/* /////////////////////////////////////////// */
+/* 	COMPONENTS */
+@import "tailwindcss/components";
+@import "./components/Html.css";
+@import "./components/Body.css";
+@import "./components/Container.css";
+@import "./components/Top_bar.css";
+@import "./components/Sidebar.css";
+@import "./components/Grid.css";
+
+
+/* DESIGN SYSTEM */
+
+@import "./components/Button.css";
+@import "./components/Input-text.css";
+@import "./components/Input-check.css";
+@import "./components/Label.css";
+@import "./components/Card.css";
+@import "./components/Tabs.css";
+@import "./components/Accordion.css";
+@import "./components/Breadcrumb.css";
+@import "./components/Container.css";
+@import "./components/Sucesso-screen.css";
+@import "./components/Dropdown.css";
+@import "./components/Input-toggle.css";
+@import "./components/Texto.css";
+@import "./components/DataTable.css";
+@import "./components/Textarea.css";
+@import "./components/TextHelper.css";
+@import "./components/Show-password.css";
+@import "./components/Select.css";
+@import "./components/ErrorList.css";
+@import "./components/TableBasic.css";
+@import "./components/FormInline.css";
+@import "./components/Notificacoes.css";
+
+@import "tailwindcss/utilities";
+
+
+@layer components {
+  .botao-mobile {
+    @apply border border-borda-10 w-48 h-48 hidden md2:flex items-center justify-center rounded-full cursor-pointer hover:border-primary-pure transition-all;
+
+    svg {
+      @apply w-[24px] h-[24px];
+    }
+  }
+}
+
+
+

@@ -1,0 +1,14 @@
+<script>
+  if (GLOBAL.url.searchParams.has('mensagem_toastify')) {
+      const mensagemToastify = GLOBAL.url.searchParams.get('mensagem_toastify')
+      Toastify({
+          text: mensagemToastify,
+          duration: 3000,
+          position: 'center'
+      }).showToast();
+
+      GLOBAL.url.searchParams.set('mensagem_toastify', '');
+      GLOBAL.url.search = ""
+      window.history.pushState({}, '', GLOBAL.url);
+  }
+</script>

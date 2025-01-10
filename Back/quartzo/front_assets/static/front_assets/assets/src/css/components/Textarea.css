@@ -1,0 +1,50 @@
+@layer components {
+	.textarea {
+		@apply bg-white border-[.0625rem] border-neutral-10  pt-16 px-16 gap-8 rounded-md resize-none outline-none min-h-[7.5rem] placeholder-neutral-60 text-neutral-60 text-sm;
+
+
+		&::placeholder {
+			@apply text-neutral-60  font-normal text-base;
+		}
+
+		&:hover {
+			@apply border-neutral-30;
+		}
+
+		&:focus-within {
+			@apply !border-primary-pure ;
+		}
+		
+		&.active {
+			@apply border-neutral-60;
+		}
+		&.inverse {
+			@apply bg-neutral-10 border-transparent	;
+
+		}
+	}
+
+	.textarea-icon {
+		@apply w-max h-max relative;
+
+		svg {
+			@apply right-12 absolute top-0 bottom-0 my-20 w-20 h-20;
+		}
+		.textarea {
+			&:not(:placeholder-shown) {
+				~ svg {
+					@apply hidden;
+				}
+			}
+		}
+
+		&.icon-left {
+			.textarea {
+				@apply pl-32;
+			}
+			svg {
+				@apply left-12  absolute top-0 bottom-0 my-20  w-20 h-20;
+			}
+		}
+	}
+}

@@ -1,0 +1,155 @@
+@mixin ModalX($modalClass) {
+	.#{$modalClass} {
+		--zindex-deep: 900;
+		--bg-modal: white;
+
+		transition: 0.4s ease;
+		transition-property: opacity, transform, visibility;
+		background: var(--bg-modal);
+		position: fixed;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		will-change: trasform;
+		z-index: var(--zindex-modal, 1000);
+
+		//
+		border-radius: 4px;
+		box-shadow: rgb(0 0 0 / 10%) 0px 10px 60px;
+
+		//
+		&[data-position="center"] {
+			width: 500px;
+			height: 500px;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			transform: translateY(30px);
+
+			.modal--content {
+				transform: translateX(0px);
+			}
+		}
+
+		// POSITIONS
+		&[data-position="right"] {
+			width: 600px;
+			height: 100vh;
+			right: 0;
+			top: 0;
+			transform: translateX(100%);
+			border-left: 1px solid #0000001c;
+		}
+
+		&[data-position="left"] {
+			width: 600px;
+			height: 100vh;
+			left: 0;
+			top: 0;
+			transform: translateX(-100%);
+			border-right: 1px solid #0000001c;
+		}
+
+		&[data-position="bottom"] {
+			width: 98vw;
+			height: 400px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			bottom: 0;
+			transform: translateY(100%);
+			border: 1px solid #0000001c;
+			border-bottom: initial;
+			border-radius: 8px 8px 0 0;
+		}
+
+		&[data-position="top"] {
+			width: 98vw;
+			height: 400px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			top: 0;
+			transform: translateY(100%);
+			border: 1px solid #0000001c;
+			border-top: initial;
+			border-radius: 0 0 8px 8px;
+		}
+
+		//CONTENT
+		.modal--content {
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			transition: 0.3s ease;
+			transition-property: opacity, transform, visibility;
+			max-height: 0px;
+			// overflow: hidden;
+			transform: translateX(20px);
+			background-color: white;
+
+			&.active {
+				opacity: 1;
+				visibility: visible;
+				pointer-events: initial;
+				max-height: initial;
+				transform: translateX(0);
+			}
+		}
+	}
+
+	//DEEP
+	.#{$modalClass}--deep {
+		z-index: var(--zindex-deep);
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		left: 0;
+		top: 0;
+		// z-index: -999999;
+		transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+			background 0.2s ease-in-out;
+		pointer-events: none;
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	// DEEP ATIVO
+	.#{$modalClass}--deep.active {
+		background: rgba(0, 0, 0, 0.3);
+		pointer-events: initial;
+		visibility: visible;
+		cursor: pointer;
+	}
+
+	//MODAL ATIVO
+	.#{$modalClass}.active {
+		transform: translateY(0);
+		pointer-events: all;
+		opacity: 1;
+		visibility: visible;
+
+		&[data-position="center"] {
+			transform: translateY(0);
+		}
+
+		&[data-position="right"],
+		&[data-position="left"] {
+			transform: translateX(0);
+		}
+
+		&[data-position="bottom"] {
+			transform: translateY(0);
+		}
+	}
+
+	.#{$modalClass} {
+		@content;
+	}
+}
+
+@include ModalX("modal_padrao");

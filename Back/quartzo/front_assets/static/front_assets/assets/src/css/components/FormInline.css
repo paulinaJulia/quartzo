@@ -1,0 +1,28 @@
+@layer components{
+  .inline-item {
+      @apply flex;
+    & + .inline-item {
+      @apply mt-16;
+    }
+    .accordion-item{
+      @apply border border-neutral-10 rounded-md ;
+      .accordion-title{
+        @apply px-8 py-16 text-neutral-50;
+      }
+      .accordion-content{
+        .accordion-container{
+          @apply !px-8 !py-16;
+        }
+      }
+    }
+
+
+
+  }
+
+  .add_inline{
+    @apply bg-white rounded-[4px] p-24 flex justify-center items-center;
+    border: 1.5px dashed #CDDEE9;
+
+  }
+}
