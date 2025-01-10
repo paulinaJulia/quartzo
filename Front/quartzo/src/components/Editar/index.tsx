@@ -13,19 +13,28 @@ export const EditarImovel: React.FC = () => {
             try {
                 const response = await fetch(`/api/imoveis/${id}`);
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar dados do imóvel.");
+                    throw new Error(`Erro na API: ${response.statusText}`);
                 }
-                const data = await response.json();
+    
+                const text = await response.text();
+                if (text.trim() === "") {
+                    throw new Error("Nenhum dado encontrado para este imóvel.");
+                }
+    
+                const data = JSON.parse(text);
                 setImovel(data);
             } catch (error: any) {
+                console.error("Erro ao carregar os dados do imóvel:", error);
                 setError(error.message);
             } finally {
                 setLoading(false);
             }
         };
-
+    
         fetchImovel();
     }, [id]);
+    
+    
 
     if (error) {
         return (
