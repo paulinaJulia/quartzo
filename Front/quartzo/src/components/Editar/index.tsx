@@ -1,135 +1,92 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Container, Form, Input, Button, Header, TextArea, Select } from "./styles";
+import { useParams } from "react-router-dom";
+import { Container, Header, Form, Input, TextArea, Button } from "./styles";
 
 export const EditarImovel: React.FC = () => {
-    const navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [formData, setFormData] = useState({
-        endereco: "",
-        categoria: "",
-        preco: "",
-        descricao: "",
-        detalhesExtras: "",
-    });
-    const [isLoading, setIsLoading] = useState(true);
+    const [imovel, setImovel] = useState<any>(null);
+    const [loading, setLoading] = useState(true); 
+    const [error, setError] = useState<string | null>(null); 
 
     useEffect(() => {
         const fetchImovel = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/imoveis/${id}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setFormData({
-                        endereco: data.endereco || "",
-                        categoria: data.categoria || "",
-                        preco: data.preco || "",
-                        descricao: data.descricao || "",
-                        detalhesExtras: data.detalhesExtras || "",
-                    });
-                    setIsLoading(false);
-                } else {
-                    alert("Erro ao carregar os dados do imóvel.");
-                    navigate("/main");
+                const response = await fetch(`/api/imoveis/${id}`);
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar dados do imóvel.");
                 }
-            } catch (error) {
-                console.error("Erro ao buscar imóvel:", error);
-                alert("Erro ao conectar com o servidor.");
-                navigate("/main");
+                const data = await response.json();
+                setImovel(data);
+            } catch (error: any) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchImovel();
-    }, [id, navigate]);
+    }, [id]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+    if (error) {
+        return (
+            <Container>
+                <Header>
+                    <h1>Editar Imóvel</h1>
+                </Header>
+                <p style={{ color: "red" }}>Erro ao carregar os dados do imóvel: {error}</p>
+            </Container>
+        );
+    }
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        try {
-            const response = await fetch(`http://127.0.0.1:8000/imoveis/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (response.ok) {
-                alert("Imóvel atualizado com sucesso!");
-                navigate("/main");
-            } else {
-                alert("Erro ao atualizar imóvel.");
-            }
-        } catch (error) {
-            console.error("Erro na requisição:", error);
-            alert("Erro ao conectar com o servidor.");
-        }
-    };
-
-    if (isLoading) {
-        return <p>Carregando...</p>;
+    if (loading) {
+        return (
+            <Container>
+                <Header>
+                    <h1>Editar Imóvel</h1>
+                </Header>
+                <p>Carregando...</p>
+            </Container>
+        );
     }
 
     return (
         <Container>
             <Header>
                 <h1>Editar Imóvel</h1>
-                <p>Atualize as informações abaixo e salve as alterações.</p>
             </Header>
-
-            <Form onSubmit={handleSubmit}>
+            <Form>
                 <Input
                     type="text"
-                    name="endereco"
-                    placeholder="Endereço do Imóvel"
-                    value={formData.endereco}
-                    onChange={handleChange}
-                    required
+                    value={imovel.endereco}
+                    onChange={(e) =>
+                        setImovel({ ...imovel, endereco: e.target.value })
+                    }
+                    placeholder="Endereço"
                 />
-                <Select
-                    name="categoria"
-                    value={formData.categoria}
-                    onChange={handleChange}
-                    required
-                >
-                    <option value="">Selecione a Categoria</option>
-                    <option value="apartamento">Apartamento</option>
-                    <option value="casa">Casa</option>
-                    <option value="comercial">Comercial</option>
-                    <option value="terreno">Terreno</option>
-                </Select>
+                <Input
+                    type="text"
+                    value={imovel.categoria}
+                    onChange={(e) =>
+                        setImovel({ ...imovel, categoria: e.target.value })
+                    }
+                    placeholder="Categoria"
+                />
                 <Input
                     type="number"
-                    name="preco"
-                    placeholder="Preço (R$)"
-                    value={formData.preco}
-                    onChange={handleChange}
-                    required
+                    value={imovel.preco}
+                    onChange={(e) =>
+                        setImovel({ ...imovel, preco: e.target.value })
+                    }
+                    placeholder="Preço"
                 />
                 <TextArea
-                    name="descricao"
-                    placeholder="Descrição do Imóvel"
-                    value={formData.descricao}
-                    onChange={handleChange}
-                    rows={4}
-                    required
-                ></TextArea>
-                <TextArea
-                    name="detalhesExtras"
-                    placeholder="Detalhes Extras (opcional)"
-                    value={formData.detalhesExtras}
-                    onChange={handleChange}
-                    rows={3}
-                ></TextArea>
+                    value={imovel.descricao}
+                    onChange={(e) =>
+                        setImovel({ ...imovel, descricao: e.target.value })
+                    }
+                    placeholder="Descrição"
+                />
                 <Button type="submit">Salvar Alterações</Button>
-                <Button type="button" onClick={() => navigate("/main")}>
-                    Cancelar
-                </Button>
             </Form>
         </Container>
     );
