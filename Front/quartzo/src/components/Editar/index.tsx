@@ -11,17 +11,16 @@ export const EditarImovel: React.FC = () => {
     useEffect(() => {
         const fetchImovel = async () => {
             try {
-                const response = await fetch(`/api/imoveis/${id}`);
+                const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}`);
                 if (!response.ok) {
                     throw new Error(`Erro na API: ${response.statusText}`);
                 }
-    
-                const text = await response.text();
-                if (text.trim() === "") {
+
+                const data = await response.json();
+                if (!data) {
                     throw new Error("Nenhum dado encontrado para este imóvel.");
                 }
-    
-                const data = JSON.parse(text);
+
                 setImovel(data);
             } catch (error: any) {
                 console.error("Erro ao carregar os dados do imóvel:", error);
@@ -30,11 +29,31 @@ export const EditarImovel: React.FC = () => {
                 setLoading(false);
             }
         };
-    
+
         fetchImovel();
     }, [id]);
-    
-    
+
+    const handleSave = async () => {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(imovel),
+            });
+
+            if (response.ok) {
+                alert("Imóvel atualizado com sucesso!");
+            } else {
+                const errorData = await response.json();
+                alert(`Erro ao atualizar imóvel: ${errorData.message || "Erro desconhecido"}`);
+            }
+        } catch (error) {
+            console.error("Erro ao salvar as alterações:", error);
+            alert("Erro ao conectar com o servidor.");
+        }
+    };
 
     if (error) {
         return (
@@ -95,7 +114,7 @@ export const EditarImovel: React.FC = () => {
                     }
                     placeholder="Descrição"
                 />
-                <Button type="submit">Salvar Alterações</Button>
+                <Button type="button" onClick={handleSave}>Salvar Alterações</Button>
             </Form>
         </Container>
     );

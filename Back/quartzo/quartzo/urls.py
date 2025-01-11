@@ -6,7 +6,7 @@ from django.urls import include, path
 from django.views.generic import RedirectView
 from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
                                    SpectacularSwaggerView)
-from financeiro.viewsets import ContratoViewSet
+from financeiro.viewsets import ContratoViewSet, PagamentoViewSet
 from imovel.viewsets import ImovelViewSet
 from rest_framework import routers
 
@@ -22,6 +22,12 @@ main_router.register(
     "contrato",
     ContratoViewSet,
     "contrato",   
+)
+
+main_router.register(
+    "pagamento",
+    PagamentoViewSet,
+    "pagamento",   
 )
 
 

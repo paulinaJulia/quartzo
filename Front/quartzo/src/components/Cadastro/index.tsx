@@ -19,27 +19,30 @@ export const CadastroImovel: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+    
         try {
-            const response = await fetch("http://127.0.0.1:8000/imoveis", {
+            console.log("Enviando dados:", formData);
+            const response = await fetch("http://127.0.0.1:8000/api/imovel", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(formData),
             });
-
+    
             if (response.ok) {
                 alert("Imóvel cadastrado com sucesso!");
                 navigate("/main");
             } else {
-                alert("Erro ao cadastrar imóvel.");
+                const errorText = await response.text();
+                console.error("Erro ao cadastrar:", errorText);
+                alert(`Erro ao cadastrar imóvel: ${errorText}`);
             }
         } catch (error) {
             console.error("Erro na requisição:", error);
             alert("Erro ao conectar com o servidor.");
         }
-    };
+    };    
 
     return (
         <Container>
