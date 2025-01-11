@@ -28,8 +28,8 @@ export const Signin = () => {
                 const data = await response.json();
                 console.log("Login bem-sucedido:", data);
 
-                if (data.token) {
-                    localStorage.setItem("token", data.token);
+                if (data.access) {
+                    localStorage.setItem("token", data.access);
                 }
                 navigate("/main");
             } else {
