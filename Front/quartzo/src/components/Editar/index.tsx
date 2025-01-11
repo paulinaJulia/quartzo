@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import { Container, Header, Form, Input, TextArea, Button, Select } from "./styles";
 
 export const EditarImovel: React.FC = () => {
-    // const { id } = useParams<{ id: string }>();
-    const id  = 2
+    const { id } = useParams<{ id: string }>();
     const [imovel, setImovel] = useState<any>(null);
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState<string | null>(null); 
