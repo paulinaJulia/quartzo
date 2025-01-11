@@ -1,17 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Header, Form, Input, TextArea, Button } from "./styles";
+import { Container, Header, Form, Input, TextArea, Button, Select } from "./styles";
 
 export const EditarImovel: React.FC = () => {
-    const { id } = useParams<{ id: string }>();
+    // const { id } = useParams<{ id: string }>();
+    const id  = 2
     const [imovel, setImovel] = useState<any>(null);
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState<string | null>(null); 
+    const token = localStorage.getItem("token");
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setImovel({ ...imovel, [name]: value });
+    };
 
     useEffect(() => {
         const fetchImovel = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}`);
+                
+
+                const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                });
+
                 if (!response.ok) {
                     throw new Error(`Erro na API: ${response.statusText}`);
                 }
@@ -35,10 +51,11 @@ export const EditarImovel: React.FC = () => {
 
     const handleSave = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}`, {
+            const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify(imovel),
             });
@@ -91,22 +108,46 @@ export const EditarImovel: React.FC = () => {
                     }
                     placeholder="Endereço"
                 />
-                <Input
-                    type="text"
+                <Select
+                    name="categoria"
                     value={imovel.categoria}
-                    onChange={(e) =>
-                        setImovel({ ...imovel, categoria: e.target.value })
-                    }
-                    placeholder="Categoria"
-                />
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Selecione a Categoria</option>
+                    <option value="apartamento">Apartamento</option>
+                    <option value="casa">Casa</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="terreno">Terreno</option>
+                </Select>
+                <Select
+                    name="tipo"
+                    value={imovel.tipo}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Selecione o tipo</option>
+                    <option value="aluguel">Aluguel</option>
+                    <option value="venda">Venda</option>
+                </Select>
                 <Input
                     type="number"
-                    value={imovel.preco}
+                    value={imovel.valor}
                     onChange={(e) =>
-                        setImovel({ ...imovel, preco: e.target.value })
+                        setImovel({ ...imovel, valor: e.target.value })
                     }
                     placeholder="Preço"
                 />
+                <Select
+                    name="status"
+                    value={imovel.status}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Selecione o Status</option>
+                    <option value="disponivel">Disponivel</option>
+                    <option value="indisponivel">Indisponivel</option>
+                </Select>
                 <TextArea
                     value={imovel.descricao}
                     onChange={(e) =>
