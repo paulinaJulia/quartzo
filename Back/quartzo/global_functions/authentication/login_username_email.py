@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
+from rest_framework import status
+from rest_framework.response import Response
 
 
 class LoginUsernameEmail(ModelBackend):
@@ -11,4 +13,4 @@ class LoginUsernameEmail(ModelBackend):
             )
             return user if user.check_password(kwargs["password"]) else None
         except:
-            return None
+            return Response({"error": "Credenciais inválidas!"}, status=status.HTTP_401_UNAUTHORIZED)
