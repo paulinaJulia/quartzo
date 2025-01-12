@@ -1,2 +1,5 @@
+from .contrato_test import ContratoViewSetTest
 
-__all__ = []
+__all__ = [
+    ContratoViewSetTest,
+]
