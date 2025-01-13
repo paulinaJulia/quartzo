@@ -9,13 +9,14 @@ export const RenovarContratos: React.FC = () => {
         prazo: "",
         valor: "",
         condicoes: "",
+        data_inicio: "",
+        data_termino: "",
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
 
-    // Carrega os contratos ativos
     useEffect(() => {
         const fetchContratos = async () => {
             try {
@@ -23,7 +24,7 @@ export const RenovarContratos: React.FC = () => {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
+                        Authorization: `Bearer ${token}`,
                     },
                 });
 
@@ -55,6 +56,8 @@ export const RenovarContratos: React.FC = () => {
             prazo: contrato.prazo || "",
             valor: contrato.valor || "",
             condicoes: contrato.condicoes || "",
+            data_inicio: contrato.data_inicio || "",
+            data_termino: contrato.data_termino || "",
         });
     };
 
@@ -67,13 +70,9 @@ export const RenovarContratos: React.FC = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
+                    Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify({
-                    prazo: formData.prazo,
-                    valor: formData.valor,
-                    condicoes: formData.condicoes,
-                }),
+                body: JSON.stringify(formData),
             });
 
             if (!response.ok) {
@@ -83,9 +82,7 @@ export const RenovarContratos: React.FC = () => {
             alert("Contrato renovado com sucesso!");
             setSelectedContrato(null);
             const updatedContratos = contratos.map((contrato) =>
-                contrato.id === selectedContrato.id
-                    ? { ...contrato, prazo: formData.prazo, valor: formData.valor, condicoes: formData.condicoes }
-                    : contrato
+                contrato.id === selectedContrato.id ? { ...contrato, ...formData } : contrato
             );
             setContratos(updatedContratos);
         } catch (error: any) {
@@ -178,6 +175,26 @@ export const RenovarContratos: React.FC = () => {
                                 type="text"
                                 name="condicoes"
                                 value={formData.condicoes}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </label>
+                        <label>
+                            Data de Início:
+                            <input
+                                type="date"
+                                name="data_inicio"
+                                value={formData.data_inicio}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </label>
+                        <label>
+                            Data de Término:
+                            <input
+                                type="date"
+                                name="data_termino"
+                                value={formData.data_termino}
                                 onChange={handleInputChange}
                                 required
                             />
