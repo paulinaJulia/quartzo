@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 from django.utils.timezone import now
 from rest_framework import filters, viewsets
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from weasyprint import HTML
 
 from ..models import Pagamento
@@ -21,7 +21,7 @@ class PagamentoViewSet(viewsets.ModelViewSet):
         
     ]
 
-    @action(detail=False, methods=['get'], url_path='relatorio-pdf')
+    @action(detail=False, methods=['get'], url_path='relatorio-pdf', permission_classes=[IsAuthenticated, IsAdminUser])
     def gerar_relatorio_pdf(self, request):
         queryset = self.get_queryset()
 
