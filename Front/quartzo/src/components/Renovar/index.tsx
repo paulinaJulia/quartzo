@@ -4,13 +4,18 @@ import { Container, Header, Table, Form, Button, Footer, Modal } from "./styles"
 
 export const RenovarContratos: React.FC = () => {
     const [contratos, setContratos] = useState<any[]>([]);
+    const [imoveis, setImoveis] = useState<any[]>([]);
     const [selectedContrato, setSelectedContrato] = useState<any | null>(null);
     const [formData, setFormData] = useState({
-        prazo: "",
+        tipo_contrato: "",
         valor: "",
-        condicoes: "",
+        forma_pagamento: "",
         data_inicio: "",
-        data_termino: "",
+        data_fim: "",
+        status: "",
+        observacoes: "",
+        cliente: "",
+        imovel: "",
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -20,11 +25,11 @@ export const RenovarContratos: React.FC = () => {
     useEffect(() => {
         const fetchContratos = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/imovel/", {
+                const response = await fetch("http://127.0.0.1:8000/api/contrato/", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
+                        "Authorization": `Bearer ${token}`,
                     },
                 });
 
@@ -42,10 +47,33 @@ export const RenovarContratos: React.FC = () => {
             }
         };
 
+        const fetchImoveis = async () => {
+            try {
+                const response = await fetch("http://127.0.0.1:8000/api/imovel/", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar imóveis: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                setImoveis(data.results || []);
+            } catch (error: any) {
+                console.error("Erro ao carregar imóveis:", error);
+            }
+        };
+
+
         fetchContratos();
+        fetchImoveis();
     }, []);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -53,11 +81,15 @@ export const RenovarContratos: React.FC = () => {
     const handleSelectContrato = (contrato: any) => {
         setSelectedContrato(contrato);
         setFormData({
-            prazo: contrato.prazo || "",
+            tipo_contrato: contrato.tipo_contrato || "",
             valor: contrato.valor || "",
-            condicoes: contrato.condicoes || "",
+            forma_pagamento: contrato.forma_pagamento || "",
             data_inicio: contrato.data_inicio || "",
-            data_termino: contrato.data_termino || "",
+            data_fim: contrato.data_fim || "",
+            status: contrato.status || "",
+            observacoes: contrato.observacoes || "",
+            cliente: contrato.cliente || "",
+            imovel: contrato.imovel || "",
         });
     };
 
@@ -66,21 +98,22 @@ export const RenovarContratos: React.FC = () => {
         if (!selectedContrato) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/imovel/`, {
-                method: "POST",
+            const response = await fetch(`http://127.0.0.1:8000/api/contrato/${selectedContrato.id}/`, {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(formData),
             });
-
+        
             if (!response.ok) {
                 throw new Error(`Erro ao renovar contrato: ${response.statusText}`);
             }
-
+        
             alert("Contrato renovado com sucesso!");
             setSelectedContrato(null);
+        
             const updatedContratos = contratos.map((contrato) =>
                 contrato.id === selectedContrato.id ? { ...contrato, ...formData } : contrato
             );
@@ -127,6 +160,7 @@ export const RenovarContratos: React.FC = () => {
                         <th>Cliente</th>
                         <th>Data de Início</th>
                         <th>Data de Término</th>
+                        <th>Status</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -134,9 +168,10 @@ export const RenovarContratos: React.FC = () => {
                     {contratos.map((contrato) => (
                         <tr key={contrato.id}>
                             <td>{contrato.id}</td>
-                            <td>{contrato.cliente}</td>
+                            <td>{contrato.cliente_name}</td>
                             <td>{contrato.data_inicio}</td>
-                            <td>{contrato.data_termino}</td>
+                            <td>{contrato.data_fim}</td>
+                            <td style={{'color': 'red'}}>{contrato.status}</td>
                             <td>
                                 <Button onClick={() => handleSelectContrato(contrato)}>Renovar</Button>
                             </td>
@@ -149,16 +184,25 @@ export const RenovarContratos: React.FC = () => {
                 <Modal>
                     <h2>Renovar Contrato</h2>
                     <Form onSubmit={handleSubmit}>
-                        <label>
-                            Prazo:
-                            <input
-                                type="text"
-                                name="prazo"
-                                value={formData.prazo}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </label>
+                    <div>
+                        <label>Tipo de Contrato:</label>
+                        <select
+                            name="tipo_contrato"
+                            value={formData.tipo_contrato}
+                            onChange={handleInputChange}
+                            required
+                        >
+                            <option value="">Selecione o tipo de contrato</option>
+                            {[
+                                { value: "aluguel", label: "Aluguel" },
+                                { value: "venda", label: "Venda" },
+                            ].map((option) => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                         <label>
                             Valor:
                             <input
@@ -169,16 +213,27 @@ export const RenovarContratos: React.FC = () => {
                                 required
                             />
                         </label>
-                        <label>
-                            Condições de Pagamento:
-                            <input
-                                type="text"
-                                name="condicoes"
-                                value={formData.condicoes}
+                        <div>
+                            <label>Forma de Pagamento:</label>
+                            <select
+                                name="forma_pagamento"
+                                value={formData.forma_pagamento}
                                 onChange={handleInputChange}
                                 required
-                            />
-                        </label>
+                            >
+                                <option value="">Selecione a forma de pagamento</option>
+                                {[
+                                    { value: "boleto", label: "Boleto" },
+                                    { value: "cartao", label: "Cartão de Crédito" },
+                                    { value: "pix", label: "PIX" },
+                                    { value: "transferencia", label: "Transferência Bancária" },
+                                ].map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                         <label>
                             Data de Início:
                             <input
@@ -193,12 +248,49 @@ export const RenovarContratos: React.FC = () => {
                             Data de Término:
                             <input
                                 type="date"
-                                name="data_termino"
-                                value={formData.data_termino}
+                                name="data_fim"
+                                value={formData.data_fim}
                                 onChange={handleInputChange}
                                 required
                             />
                         </label>
+                        <div>
+                            <label>Status:</label>
+                            <select
+                                name="status"
+                                value={formData.status}
+                                onChange={handleInputChange}
+                                required
+                            >
+                                <option value="">Selecione o status</option>
+                                {[
+                                    { value: "ativo", label: "Ativo" },
+                                    { value: "cancelado", label: "Cancelado" },
+                                    { value: "finalizado", label: "Finalizado" },
+                                ].map((option) => (
+                                    <option key={option.value} value={option.value}>
+                                        {option.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <label>
+                            Observações:
+                            <input
+                                name="observacoes"
+                                value={formData.observacoes}
+                                onChange={handleInputChange}
+                            />
+                        </label>
+                        <div>
+                            <label>Imóvel:</label>
+                            <p>
+                                {
+                                    imoveis.find((imovel) => imovel.id === selectedContrato?.imovel)?.endereco || 
+                                    "Imóvel não disponível"
+                                }
+                            </p>
+                        </div>
                         <Button type="submit">Confirmar Renovação</Button>
                         <Button onClick={() => setSelectedContrato(null)}>Cancelar</Button>
                     </Form>
