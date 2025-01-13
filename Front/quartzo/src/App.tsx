@@ -6,9 +6,9 @@ import { Signup } from "./components/Signup";
 import { MenuPage } from "./components/MenuPage";
 import { Menu } from "@mui/material";
 import { CadastroImovel } from "./components/Cadastro";
-import { EditarImovel } from "./components/Editar"; // Criar este componente
-// import { RemoverImoveis } from "./components/RemoverImoveis"; // Criar este componente
-// import { RenovarContratos } from "./components/RenovarContratos"; // Criar este componente
+import { Imoveis } from "./components/Imoveis";
+import { EditarImovel } from "./components/Editar";
+import { RenovarContratos } from "./components/Renovar";
 // import { GerarRelatorios } from "./components/GerarRelatorios"; // Criar este componente
 
 function App() {
@@ -19,10 +19,12 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/main" element={<MenuPage />} />      
                 <Route path="/cadastrar-imovel" element={<CadastroImovel />} />
-                <Route path="/editar-imoveis" element={<EditarImovel />} />
-                {/* <Route path="/remover-imoveis" element={<RemoverImoveis />} />
+                <Route path="/editar-imoveis/:id" element={<EditarImovel />} />
+
+                <Route path="/imoveis" element={<Imoveis />} />
+
                 <Route path="/renovar-contratos" element={<RenovarContratos />} />
-                <Route path="/gerar-relatorios" element={<GerarRelatorios />} /> */ } */
+               
             </Routes>
         </Router>
     );

@@ -7,9 +7,10 @@ export const CadastroImovel: React.FC = () => {
     const [formData, setFormData] = useState({
         endereco: "",
         categoria: "",
-        preco: "",
+        tipo: "",
+        valor: "",
+        status: "",
         descricao: "",
-        detalhesExtras: "",
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -22,10 +23,14 @@ export const CadastroImovel: React.FC = () => {
     
         try {
             console.log("Enviando dados:", formData);
-            const response = await fetch("http://127.0.0.1:8000/api/imovel", {
+
+            const token = localStorage.getItem("token");
+
+            const response = await fetch("http://127.0.0.1:8000/api/imovel/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify(formData),
             });
@@ -72,14 +77,34 @@ export const CadastroImovel: React.FC = () => {
                     <option value="comercial">Comercial</option>
                     <option value="terreno">Terreno</option>
                 </Select>
+                <Select
+                    name="tipo"
+                    value={formData.tipo}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Selecione o tipo</option>
+                    <option value="aluguel">Aluguel</option>
+                    <option value="venda">Venda</option>
+                </Select>
                 <Input
                     type="number"
-                    name="preco"
+                    name="valor"
                     placeholder="Preço (R$)"
-                    value={formData.preco}
+                    value={formData.valor}
                     onChange={handleChange}
                     required
                 />
+                <Select
+                    name="status"
+                    value={formData.status}
+                    onChange={handleChange}
+                    required
+                >
+                    <option value="">Selecione o Status</option>
+                    <option value="disponivel">Disponivel</option>
+                    <option value="indisponivel">Indisponivel</option>
+                </Select>
                 <TextArea
                     name="descricao"
                     placeholder="Descrição do Imóvel"
@@ -87,13 +112,6 @@ export const CadastroImovel: React.FC = () => {
                     onChange={handleChange}
                     rows={4}
                     required
-                ></TextArea>
-                <TextArea
-                    name="detalhesExtras"
-                    placeholder="Detalhes Extras (opcional)"
-                    value={formData.detalhesExtras}
-                    onChange={handleChange}
-                    rows={3}
                 ></TextArea>
                 <Button type="submit">Cadastrar Imóvel</Button>
                 <Button type="button" onClick={() => navigate("/main")}>
