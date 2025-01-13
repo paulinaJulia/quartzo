@@ -64,32 +64,45 @@ export const RenovarContratos: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!selectedContrato) return;
-
+    
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/imovel/`, {
+            const requestBody = {
+                id: selectedContrato.id, // Inclua o ID do contrato
+                prazo: formData.prazo,
+                valor: formData.valor,
+                condicoes: formData.condicoes,
+            };
+    
+            console.log("Dados enviados:", requestBody);
+    
+            const response = await fetch(`http://127.0.0.1:8000/api/imovel/renovar`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(requestBody),
             });
-
+    
             if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Erro ao renovar contrato:", errorData);
                 throw new Error(`Erro ao renovar contrato: ${response.statusText}`);
             }
-
+    
             alert("Contrato renovado com sucesso!");
             setSelectedContrato(null);
             const updatedContratos = contratos.map((contrato) =>
-                contrato.id === selectedContrato.id ? { ...contrato, ...formData } : contrato
+                contrato.id === selectedContrato.id
+                    ? { ...contrato, prazo: formData.prazo, valor: formData.valor, condicoes: formData.condicoes }
+                    : contrato
             );
             setContratos(updatedContratos);
         } catch (error: any) {
             console.error("Erro ao renovar contrato:", error);
-            alert("Erro ao renovar o contrato.");
+            alert("Erro ao renovar o contrato. Verifique os dados enviados e tente novamente.");
         }
-    };
+    };    
 
     if (error) {
         return (
