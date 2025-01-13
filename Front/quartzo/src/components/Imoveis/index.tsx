@@ -71,7 +71,7 @@ export const Imoveis: React.FC = () => {
                     <h1>Lista de Imóveis</h1>
                 </Header>
                 <p style={{ color: "red" }}>Erro ao carregar imóveis: {error}</p>
-                <Button onClick={() => navigate("/menu")}>Voltar ao Menu</Button>
+                <Button onClick={() => navigate("/main")}>Voltar ao Menu</Button>
             </Container>
         );
     }
@@ -127,7 +127,7 @@ export const Imoveis: React.FC = () => {
                     ))}
                 </tbody>
             </Table>
-            <Button onClick={() => navigate("/menu")}>Voltar ao Menu</Button>
+            <Button onClick={() => navigate("/main")}>Voltar ao Menu</Button>
         </Container>
     );
 };
