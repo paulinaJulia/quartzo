@@ -100,9 +100,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "quartzo.wsgi.application"
 
+USE_POSTGRES = config("USE_POSTGRES", default=False, cast=bool)
 
-default_dburl = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
-DATABASES = {"default": config("DATABASE_URL", default=default_dburl, cast=dburl)}
+if USE_POSTGRES:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": config("DATABASE_POSTGRES"),
+            "USER": config("USER_POSTGRES"),
+            "PASSWORD": config("PASSWORD_POSTGRES"),
+            "HOST": config("HOST_POSTGRES"),
+            "PORT": config("PORT_POSTGRES"),
+            "OPTIONS": {
+                "sslmode": "require",
+            },
+        }
+    }
+
+else:
+    default_dburl = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
+    DATABASES = {
+    'default': config(
+        'DATABASE_URL', default=default_dburl, cast=dburl
+     )
+  }
+
 
 USE_AWS = config("USE_AWS", default=False, cast=bool)
 if USE_AWS:
