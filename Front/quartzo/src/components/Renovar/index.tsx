@@ -188,7 +188,7 @@ export const RenovarContratos: React.FC = () => {
                 </Modal>
             )}
 
-            <Button onClick={() => navigate("/menu")} style={{ marginTop: "20px" }}>
+            <Button onClick={() => navigate("/main")} style={{ marginTop: "20px" }}>
                 Voltar ao Menu
             </Button>
 
