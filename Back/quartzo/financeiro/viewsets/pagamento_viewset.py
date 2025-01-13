@@ -1,5 +1,10 @@
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.utils.timezone import now
 from rest_framework import filters, viewsets
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
+from weasyprint import HTML
 
 from ..models import Pagamento
 from ..serializers import PagamentoSerializer
@@ -15,3 +20,18 @@ class PagamentoViewSet(viewsets.ModelViewSet):
     search_fields = [
         
     ]
+
+    @action(detail=False, methods=['get'], url_path='relatorio-pdf')
+    def gerar_relatorio_pdf(self, request):
+        queryset = self.get_queryset()
+
+        html = render_to_string(
+            'admin/relatorio_pagamentos.html',
+            {'pagamentos': queryset, 'current_time': now()}
+        )
+        
+        pdf = HTML(string=html).write_pdf()
+
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="relatorio_pagamentos.pdf"'
+        return response
