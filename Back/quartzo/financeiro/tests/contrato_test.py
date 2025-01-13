@@ -1,9 +1,10 @@
+from decouple import config
 from django.contrib.auth.models import User
 from django.utils.timezone import now, timedelta
+from financeiro.models import Contrato
+from imovel.models import Imovel
 from rest_framework import status
 from rest_framework.test import APITestCase
-from imovel.models import Imovel
-from financeiro.models import Contrato
 
 
 class ContratoViewSetTest(APITestCase):
@@ -11,8 +12,8 @@ class ContratoViewSetTest(APITestCase):
         """Configura os dados para os testes"""
         Contrato.objects.all().delete()
         Imovel.objects.all().delete()
-        self.user = User.objects.create_user(username="testuser", password="12345")
-        self.client.login(username="testuser", password="12345")
+        self.user = User.objects.create_user(username="testuser", password=config("SENHA_TEST", ""))
+        self.client.login(username="testuser", password=config("SENHA_TEST", ""))
 
         self.imovel = Imovel.objects.create(
             endereco="Rua Teste, 123",
