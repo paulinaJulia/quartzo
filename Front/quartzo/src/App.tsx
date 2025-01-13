@@ -8,7 +8,7 @@ import { Menu } from "@mui/material";
 import { CadastroImovel } from "./components/Cadastro";
 import { Imoveis } from "./components/Imoveis";
 import { EditarImovel } from "./components/Editar";
-// import { RenovarContratos } from "./components/RenovarContratos"; // Criar este componente
+import { RenovarContratos } from "./components/Renovar";
 // import { GerarRelatorios } from "./components/GerarRelatorios"; // Criar este componente
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
 
                 <Route path="/imoveis" element={<Imoveis />} />
 
-                {/*<Route path="/renovar-contratos" element={<RenovarContratos />} />
-                <Route path="/gerar-relatorios" element={<GerarRelatorios />} /> */ } */
+                <Route path="/renovar-contratos" element={<RenovarContratos />} />
+               
             </Routes>
         </Router>
     );
