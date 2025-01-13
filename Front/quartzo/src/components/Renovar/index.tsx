@@ -96,7 +96,7 @@ export const RenovarContratos: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!selectedContrato) return;
-
+        let errorMessage = ""
         try {
             const response = await fetch(`http://127.0.0.1:8000/api/contrato/${selectedContrato.id}/`, {
                 method: "PATCH",
@@ -108,7 +108,10 @@ export const RenovarContratos: React.FC = () => {
             });
         
             if (!response.ok) {
-                throw new Error(`Erro ao renovar contrato: ${response.statusText}`);
+                const errorData = await response.json();
+                errorMessage = errorData.detail || 
+                    Object.values(errorData).flat().join(", ");
+                throw new Error(errorMessage);
             }
         
             alert("Contrato renovado com sucesso!");
@@ -119,8 +122,7 @@ export const RenovarContratos: React.FC = () => {
             );
             setContratos(updatedContratos);
         } catch (error: any) {
-            console.error("Erro ao renovar contrato:", error);
-            alert("Erro ao renovar o contrato.");
+            alert(`Erro ao renovar o contrato: ${errorMessage}`);
         }
     };
 
