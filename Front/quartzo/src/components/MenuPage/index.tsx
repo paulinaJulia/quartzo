@@ -16,7 +16,6 @@ export const MenuPage: React.FC = () => {
                 <h2>Gestão de Imóveis</h2>
                 <Button onClick={() => navigate("/cadastrar-imovel")}>Cadastrar Imóvel</Button>
                 <Button onClick={() => navigate("/imoveis")}>Imóveis</Button>
-                <Button onClick={() => navigate("/remover-imoveis")}>Remover Imóveis</Button>
             </Section>
 
             <Section>
