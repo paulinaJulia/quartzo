@@ -69,6 +69,7 @@ export const Imoveis: React.FC = () => {
             <Container>
                 <Header>
                     <h1>Lista de Imóveis</h1>
+                    <Button onClick={() => navigate("/menu")}>Voltar ao Menu</Button>
                 </Header>
                 <p style={{ color: "red" }}>Erro ao carregar imóveis: {error}</p>
             </Container>
@@ -80,6 +81,7 @@ export const Imoveis: React.FC = () => {
             <Container>
                 <Header>
                     <h1>Lista de Imóveis</h1>
+                    <Button onClick={() => navigate("/menu")}>Voltar ao Menu</Button>
                 </Header>
                 <p>Carregando...</p>
             </Container>
@@ -90,6 +92,7 @@ export const Imoveis: React.FC = () => {
         <Container>
             <Header>
                 <h1>Lista de Imóveis</h1>
+                <Button onClick={() => navigate("/main")}>Voltar ao Menu</Button>
             </Header>
             <Table>
                 <thead>
