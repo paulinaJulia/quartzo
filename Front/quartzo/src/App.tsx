@@ -7,8 +7,7 @@ import { MenuPage } from "./components/MenuPage";
 import { Menu } from "@mui/material";
 import { CadastroImovel } from "./components/Cadastro";
 import { Imoveis } from "./components/Imoveis";
-import { EditarImovel } from "./components/Editar"; // Criar este componente
-// import { RemoverImoveis } from "./components/RemoverImoveis"; // Criar este componente
+import { EditarImovel } from "./components/Editar";
 // import { RenovarContratos } from "./components/RenovarContratos"; // Criar este componente
 // import { GerarRelatorios } from "./components/GerarRelatorios"; // Criar este componente
 
@@ -24,8 +23,7 @@ function App() {
 
                 <Route path="/imoveis" element={<Imoveis />} />
 
-                {/* <Route path="/remover-imoveis" element={<RemoverImoveis />} />
-                <Route path="/renovar-contratos" element={<RenovarContratos />} />
+                {/*<Route path="/renovar-contratos" element={<RenovarContratos />} />
                 <Route path="/gerar-relatorios" element={<GerarRelatorios />} /> */ } */
             </Routes>
         </Router>
