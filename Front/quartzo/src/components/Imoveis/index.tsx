@@ -39,6 +39,31 @@ export const Imoveis: React.FC = () => {
         fetchImoveis();
     }, []);
 
+    const removerImovel = async (id: number) => {
+        const confirmacao = window.confirm("Tem certeza de que deseja remover este imóvel?");
+        if (!confirmacao) return;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}/`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro ao remover imóvel: ${response.statusText}`);
+            }
+
+            setImoveis(imoveis.filter((imovel) => imovel.id !== id));
+            alert("Imóvel removido com sucesso!");
+        } catch (error: any) {
+            console.error("Erro ao remover imóvel:", error);
+            alert("Erro ao remover o imóvel.");
+        }
+    };
+
     if (error) {
         return (
             <Container>
@@ -88,6 +113,12 @@ export const Imoveis: React.FC = () => {
                                     onClick={() => navigate(`/editar-imoveis/${imovel.id}`)}
                                 >
                                     Editar
+                                </Button>
+                                <Button
+                                    onClick={() => removerImovel(imovel.id)}
+                                    style={{ marginLeft: "10px", backgroundColor: "red", color: "white" }}
+                                >
+                                    Remover
                                 </Button>
                             </td>
                         </tr>
