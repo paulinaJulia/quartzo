@@ -1,3 +1,4 @@
+from decouple import config
 from django.contrib.auth.models import User
 from imovel.models import Imovel
 from rest_framework import status
@@ -8,8 +9,8 @@ class ImovelViewSetTest(APITestCase):
     def setUp(self):
         """Configura os dados para os testes"""
         Imovel.objects.all().delete()
-        self.user = User.objects.create_user(username="testuser", password="12345")
-        self.client.login(username="testuser", password="12345")
+        self.user = User.objects.create_user(username="testuser", password=config("SENHA_TEST", ""))
+        self.client.login(username="testuser", password=config("SENHA_TEST", ""))
 
         self.imovel = Imovel.objects.create(
             endereco="Rua Teste, 123",

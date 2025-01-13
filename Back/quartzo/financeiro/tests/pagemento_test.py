@@ -1,5 +1,6 @@
 from datetime import date
 
+from decouple import config
 from django.contrib.auth.models import User
 from financeiro.models import Contrato, Pagamento
 from imovel.models import Imovel
@@ -10,7 +11,7 @@ from rest_framework.test import APITestCase
 class PagamentoViewSetTest(APITestCase):
     def setUp(self):
         """Configura os dados para os testes"""
-        self.user = User.objects.create_user(username="testuser", password="12345")
+        self.user = User.objects.create_user(username="testuser", password=config("SENHA_TEST", ""))
         
         self.imovel = Imovel.objects.create(
             endereco="Rua Teste, 123",
@@ -40,7 +41,7 @@ class PagamentoViewSetTest(APITestCase):
         self.url_list = "/api/pagamento/"
         self.url_detail = f"/api/pagamento/{self.pagamento.pk}/"
         
-        self.client.login(username="testuser", password="12345")
+        self.client.login(username="testuser", password=config("SENHA_TEST", ""))
         
     def test_list_pagamentos(self):
         """Testa se a listagem de pagamentos está funcionando"""
