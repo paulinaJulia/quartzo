@@ -14,6 +14,7 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "167.234.232.111"
 ]
 
 INTERNAL_IPS = [
@@ -146,7 +147,20 @@ if USE_AWS:
     PUBLIC_MEDIA_LOCATION = "media"
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
     DEFAULT_FILE_STORAGE = "quartzo.storage_backends.PublicMediaStorage"
+else:
+    PRODUCAO = config('PRODUCAO', default=False, cast=bool)
+    if PRODUCAO:
+        STATIC_URL = '/static/'
+        STATIC_ROOT = ('/var/www/html/static')
+        MEDIA_URL = '/media/'
+        MEDIA_ROOT = ('/var/www/html/media')
+    else:
+        STATIC_URL = '/static/'
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+        MEDIA_URL = '/media/'
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+        
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
@@ -208,12 +222,6 @@ USE_TZ = False
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
 LOGIN_URL = "login"
-
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
