@@ -31,3 +31,4 @@ twine
 wheel
 django-advanced-filters
 django-cors-headers
+weasyprint==63.1
