@@ -97,3 +97,10 @@ export const Table = styled.table`
         font-weight: bold;
     }
 `;
+
+export const SearchContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+`;
