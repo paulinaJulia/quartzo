@@ -21,11 +21,12 @@ export const RenovarContratos: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
 
     useEffect(() => {
         const fetchContratos = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/contrato/", {
+                const response = await fetch(`${BASE_URL}api/contrato/`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
@@ -49,7 +50,7 @@ export const RenovarContratos: React.FC = () => {
 
         const fetchImoveis = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/imovel/", {
+                const response = await fetch(`${BASE_URL}api/imovel/`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

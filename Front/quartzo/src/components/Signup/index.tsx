@@ -8,6 +8,7 @@ export const Signup: React.FC = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -18,7 +19,7 @@ export const Signup: React.FC = () => {
         }
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/user_register/", {
+            const response = await fetch(`${BASE_URL}user_register/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
