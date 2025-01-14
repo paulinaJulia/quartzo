@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "novadata_utils",
     "rest_framework",
     "widget_tweaks",
+    'admin_reorder',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "home.middlewares.ModelAndAppNameMiddleware",
     "crum.CurrentRequestUserMiddleware",
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 DEV = config("DEV", default=False, cast=bool)
@@ -224,3 +226,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = config("EMAIL_KEY")
 DEFAULT_FROM_EMAIL = config("EMAIL_HOST_USER")
+
+ADMIN_REORDER = (
+    'auth',
+    'financeiro',
+    'imovel',
+)
