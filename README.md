@@ -22,5 +22,5 @@ Todos os documentos, inclusive o artigo em PDF estão disponiveis no diretório 
 https://sonarcloud.io/summary/overall?id=paulinaJulia_quartzo&branch=main
 
 ![image](https://github.com/user-attachments/assets/6af8a991-89ea-4ea3-bd78-8d9ae7b50ae6)
-
+# https://quartzo-com55y4lp-paulina-julias-projects.vercel.app/
 Este README fornece uma visão geral do projeto.
