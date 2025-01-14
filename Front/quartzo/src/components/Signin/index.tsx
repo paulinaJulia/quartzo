@@ -106,12 +106,6 @@ export const Signin = () => {
                             >
                                 Entrar
                             </Button>
-                            <div className="checkbox">
-                                <span>
-                                    <input type="checkbox" className="input-checkbox" />
-                                </span>
-                                <p>Lembrar senha.</p>
-                            </div>
                         </div>
                         <div className="cad">
                             <p>

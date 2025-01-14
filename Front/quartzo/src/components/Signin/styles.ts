@@ -94,26 +94,6 @@ export const Form = styled.div`
     }
   }
 
-  .checkbox {
-    align-items: center;
-    display: flex;
-    margin: auto;
-    flex-direction: row;
-    width: 100%;
-    justify-content: end;
-    animation: ${moveToRight} 0.5s;
-
-    p {
-      font-size: 1.2rem;
-      color: #0b0d17;
-    }
-  }
-
-  .input-checkbox {
-    margin-right: 5px;
-    margin-bottom: -4px;
-  }
-
   .bottom {
     width: 60%;
     margin-top: 1.3rem;
@@ -145,10 +125,6 @@ export const Form = styled.div`
   @media (max-width: 1500px) {
     .bottom {
       width: 80%;
-    }
-
-    .checkbox p {
-      color: #0b0d17;
     }
   }
 
