@@ -23,7 +23,7 @@ class PagamentoAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'contrato',
-        'usuario',
+        'cliente',
         'valor_pago',
         'data_pagamento',
     ]
@@ -32,7 +32,7 @@ class PagamentoAdmin(admin.ModelAdmin):
         'id',
         'contrato__id',
         'contrato__imovel__endereco',
-        'usuario__username',
+        'cliente__username',
         'valor_pago',
     ]
 
@@ -40,4 +40,4 @@ class PagamentoAdmin(admin.ModelAdmin):
         'data_pagamento',
     ]
 
-    autocomplete_fields = ['contrato', 'usuario']
+    autocomplete_fields = ['contrato', 'cliente']

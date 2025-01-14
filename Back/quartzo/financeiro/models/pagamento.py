@@ -9,10 +9,10 @@ class Pagamento(models.Model):
         verbose_name="Contrato",
         related_name="pagamentos",
     )
-    usuario = models.ForeignKey(
+    cliente = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
-        verbose_name="Usuário",
+        verbose_name="Cliente",
         null=True,
         blank=True,
     )
