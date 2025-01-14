@@ -173,7 +173,7 @@ export const RenovarContratos: React.FC = () => {
                             <td>{contrato.cliente_name}</td>
                             <td>{contrato.data_inicio}</td>
                             <td>{contrato.data_fim}</td>
-                            <td style={{'color': 'red'}}>{contrato.status}</td>
+                            <td style={{ color: contrato.status === 'ativo' ? 'green' : 'red' }}>{contrato.status}</td>
                             <td>
                                 <Button onClick={() => handleSelectContrato(contrato)}>Renovar</Button>
                             </td>
