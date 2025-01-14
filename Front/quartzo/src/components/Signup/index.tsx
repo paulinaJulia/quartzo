@@ -8,7 +8,7 @@ export const Signup: React.FC = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
+    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.dev/";
 
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();

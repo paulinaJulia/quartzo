@@ -21,7 +21,7 @@ export const RenovarContratos: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
+    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.dev/";
 
     useEffect(() => {
         const fetchContratos = async () => {
