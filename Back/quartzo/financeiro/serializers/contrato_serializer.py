@@ -23,7 +23,7 @@ class ContratoSerializer(serializers.ModelSerializer):
         """
         Valida se o contrato está dentro da data de validade para ser renovado.
         """
-        if data.get("status") == "ativo" and data.get("data_fim") and now().date() > data["data_fim"]:
+        if self.instance.status != "ativo" or data.get("data_fim") < now().date():
             raise serializers.ValidationError(
                 "Não é possível renovar este contrato porque está fora do período de validade."
             )

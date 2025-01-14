@@ -13,7 +13,7 @@ from ..serializers import PagamentoSerializer
 class PagamentoViewSet(viewsets.ModelViewSet):
     queryset = Pagamento.objects.all()
     serializer_class = PagamentoSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAdminUser]
 
     filter_backends = [filters.SearchFilter]
 

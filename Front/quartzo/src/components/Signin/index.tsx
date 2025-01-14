@@ -10,10 +10,11 @@ export const Signin = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
 
     const handleLogin = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:8000/user_login/", {
+            const response = await fetch(`${BASE_URL}user_login/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -105,12 +106,6 @@ export const Signin = () => {
                             >
                                 Entrar
                             </Button>
-                            <div className="checkbox">
-                                <span>
-                                    <input type="checkbox" className="input-checkbox" />
-                                </span>
-                                <p>Lembrar senha.</p>
-                            </div>
                         </div>
                         <div className="cad">
                             <p>
