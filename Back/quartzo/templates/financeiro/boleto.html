@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Boleto Bancário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #000;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .header img {
+            height: 40px;
+        }
+        .header div {
+            text-align: right;
+            flex-grow: 1;
+        }
+        .header div span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .section {
+            padding: 10px;
+        }
+        .section table {
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        .section table td, .section table th {
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: left;
+        }
+        .barcode {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .barcode img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <strong>Quartzo</strong>
+            <div>
+                <span>237-2</span><br>
+                <strong>23791.11103 60000.000103 01000.222206 1 48622000000000</strong>
+            </div>
+        </div>
+        <div class="section">
+            <table>
+                <tr>
+                    <th>Local de pagamento</th>
+                    <td colspan="4">Pagável preferencialmente nas agências do Bradesco</td>
+                </tr>
+                <tr>
+                    <th>Cedente</th>
+                    <td colspan="4">NF-e Associação NF-e</td>
+                </tr>
+                <tr>
+                    <th>Data do documento</th>
+                    <td>25/01/2011</td>
+                    <th>Espécie doc.</th>
+                    <td>NF</td>
+                </tr>
+                <tr>
+                    <th>Data processamento</th>
+                    <td>25/01/2011</td>
+                    <th>Espécie</th>
+                    <td>R$</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th colspan="4">Instruções (Texto de responsabilidade do cedente)</th>
+                </tr>
+                <tr>
+                    <td colspan="4">Não receber após o vencimento.</td>
+                </tr>
+                <tr>
+                    <th>Vencimento</th>
+                    <td>29/01/2011</td>
+                    <th>Valor documento</th>
+                    <td>R$ 20.000,00</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Sacado</th>
+                    <td colspan="4">Distribuidora de Águas Minerais - CNPJ: 00.000.000/0001-91</td>
+                </tr>
+                <tr>
+                    <th>Endereço</th>
+                    <td colspan="4">Av. das Fontes, 1777 - São Paulo - CEP: 13950-000</td>
+                </tr>
+            </table>
+        </div>
+        <div class="barcode">
+            <img src="{{ codigo_barras_url }}" alt="Código de Barras">
+        </div>
+    </div>
+</body>
+</html>
