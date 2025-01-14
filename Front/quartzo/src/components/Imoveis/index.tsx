@@ -9,12 +9,13 @@ export const Imoveis: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>(""); // Estado para o termo de busca
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
 
     const fetchImoveis = async (searchQuery: string = "") => {
         setLoading(true);
         try {
             const response = await fetch(
-                `http://127.0.0.1:8000/api/imovel/?search=${searchQuery}`,
+                `${BASE_URL}api/imovel/?search=${searchQuery}`,
                 {
                     method: "GET",
                     headers: {
@@ -52,7 +53,7 @@ export const Imoveis: React.FC = () => {
         if (!confirmacao) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:8000/api/imovel/${id}/`, {
+            const response = await fetch(`${BASE_URL}api/imovel/${id}/`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

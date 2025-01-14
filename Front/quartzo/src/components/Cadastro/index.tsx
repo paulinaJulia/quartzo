@@ -12,6 +12,7 @@ export const CadastroImovel: React.FC = () => {
         status: "",
         descricao: "",
     });
+    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -26,7 +27,7 @@ export const CadastroImovel: React.FC = () => {
 
             const token = localStorage.getItem("token");
 
-            const response = await fetch("http://127.0.0.1:8000/api/imovel/", {
+            const response = await fetch(`${BASE_URL}api/imovel/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
