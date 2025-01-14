@@ -2,7 +2,7 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
-from decouple import config
+from decouple import Csv, config
 from dj_database_url import parse as dburl
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,21 +11,13 @@ SECRET_KEY = config("SECRET_KEY", "")
 
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "167.234.232.111"
-]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:9000",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
 
 INSTALLED_APPS = [
     "django_app_novadata",
