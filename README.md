@@ -15,6 +15,7 @@ Curso: [Bacharel em Engenharia de Software](https://engsoftwarepaudosferros.ufer
 ## Link do artigo: 
 https://www.overleaf.com/project/675bab906de4e6a85d66db4c
 
-
+## Sobre os documentos
+Todos os documentos, inclusive o artigo em PDF estão disponiveis no diretório de Docs:  https://github.com/paulinaJulia/quartzo/tree/main/Docs-quartzo
 
 Este README fornece uma visão geral do projeto.
