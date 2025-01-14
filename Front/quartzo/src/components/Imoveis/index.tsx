@@ -9,7 +9,7 @@ export const Imoveis: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>(""); // Estado para o termo de busca
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
+    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.com.br/";
 
     const fetchImoveis = async (searchQuery: string = "") => {
         setLoading(true);

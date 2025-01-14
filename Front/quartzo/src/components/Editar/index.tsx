@@ -8,7 +8,7 @@ export const EditarImovel: React.FC = () => {
     const [loading, setLoading] = useState(true); 
     const [error, setError] = useState<string | null>(null); 
     const token = localStorage.getItem("token");
-    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
+    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.com.br/";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
