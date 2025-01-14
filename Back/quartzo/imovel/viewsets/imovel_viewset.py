@@ -14,4 +14,5 @@ class ImovelViewSet(viewsets.ModelViewSet):
 
     search_fields = [
         "endereco",
+        "tipo",
     ]
