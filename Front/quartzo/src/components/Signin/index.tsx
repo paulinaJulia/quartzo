@@ -10,7 +10,7 @@ export const Signin = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.com.br/";
+    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.dev/";
 
     const handleLogin = async () => {
         try {
