@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Header, Table, Button, Footer } from "./styles";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
 
 export const GerarRelatorios: React.FC = () => {
     const [relatorios, setRelatorios] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [pdfUrl, setPdfUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
-
+    const BASE_URL = process.env.REACT_APP_API_URL || "http://167.234.232.111/";
     useEffect(() => {
         const fetchRelatorios = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/api/imovel/", {
+                const response = await fetch(`${BASE_URL}api/pagamento/`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     },
                 });
+
+                if (response.status === 403) {
+                    setError("Apenas usuários administradores podem acessar os relatórios.");
+                    return;
+                }
 
                 if (!response.ok) {
                     throw new Error(`Erro ao carregar relatórios: ${response.statusText}`);
@@ -39,32 +43,33 @@ export const GerarRelatorios: React.FC = () => {
         fetchRelatorios();
     }, []);
 
-    const exportToPDF = () => {
-        const doc = new jsPDF();
-    
-        doc.text("Relatório Financeiro", 14, 10);
-    
-        // Cabeçalhos da tabela
-        const headers = ["Data", "Descrição", "Valor", "Tipo"];
-        let startY = 20;
-    
-        headers.forEach((header, index) => {
-            doc.text(header, 14 + index * 40, startY);
-        });
-    
-        startY += 10;
-    
-        // Linhas da tabela
-        relatorios.forEach((relatorio) => {
-            doc.text(relatorio.data, 14, startY);
-            doc.text(relatorio.descricao, 54, startY);
-            doc.text(`R$ ${relatorio.valor.toFixed(2)}`, 94, startY);
-            doc.text(relatorio.tipo, 134, startY);
-            startY += 10;
-        });
-    
-        doc.save("relatorio-financeiro.pdf");
-    };    
+    const fetchPdf = async () => {
+        try {
+            const response = await fetch(`${BASE_URL}api/pagamento/relatorio-pdf/`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar o PDF");
+            }
+
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "relatorio-financeiro.pdf";
+            link.click();
+            URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error("Erro ao baixar o PDF:", error);
+            setError("Erro ao baixar o PDF");
+        }
+    };
 
     if (error) {
         return (
@@ -107,15 +112,15 @@ export const GerarRelatorios: React.FC = () => {
                 <tbody>
                     {relatorios.map((relatorio) => (
                         <tr key={relatorio.id}>
-                            <td>{relatorio.data}</td>
-                            <td>{relatorio.descricao}</td>
-                            <td>{`R$ ${relatorio.valor.toFixed(2)}`}</td>
-                            <td>{relatorio.tipo}</td>
+                            <td>{relatorio.data_pagamento}</td>
+                            <td>{relatorio.contrato}</td>
+                            <td>{`R$ ${relatorio.valor_pago.toFixed(2)}`}</td>
+                            <td>{relatorio.cliente}</td>
                         </tr>
                     ))}
                 </tbody>
             </Table>
-            <Button onClick={exportToPDF} style={{ marginTop: "20px" }}>
+            <Button onClick={fetchPdf} style={{ marginTop: "20px" }}>
                 Exportar para PDF
             </Button>
             <Button onClick={() => navigate("/main")} style={{ marginTop: "20px" }}>
