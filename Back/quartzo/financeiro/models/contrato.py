@@ -76,17 +76,6 @@ class Contrato(models.Model):
         auto_now=True,
     )
 
-    def clean(self):
-        """
-        Valida se o contrato pode ser renovado com base no status e nas datas.
-        """
-        if self.status == "ativo" and self.data_fim and now().date() > self.data_fim:
-            raise ValidationError(
-                "Não é possível renovar este contrato porque está fora do período de validade."
-            )
-
-        if self.data_inicio and self.data_fim and self.data_inicio > self.data_fim:
-            raise ValidationError("A data de início não pode ser posterior à data de fim.")
 
     def __str__(self):
         """Retorna uma representação do objeto como string."""
