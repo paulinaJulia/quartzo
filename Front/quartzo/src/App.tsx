@@ -9,7 +9,7 @@ import { CadastroImovel } from "./components/Cadastro";
 import { Imoveis } from "./components/Imoveis";
 import { EditarImovel } from "./components/Editar";
 import { RenovarContratos } from "./components/Renovar";
-// import { GerarRelatorios } from "./components/GerarRelatorios"; // Criar este componente
+import { GerarRelatorios } from "./components/Gerar"; // Criar este componente
 
 function App() {
     return (
@@ -24,6 +24,8 @@ function App() {
                 <Route path="/imoveis" element={<Imoveis />} />
 
                 <Route path="/renovar-contratos" element={<RenovarContratos />} />
+                <Route path="/gerar-relatorios" element={<GerarRelatorios />} />
+
                
             </Routes>
         </Router>
