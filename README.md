@@ -18,4 +18,9 @@ https://www.overleaf.com/project/675bab906de4e6a85d66db4c
 ## Sobre os documentos
 Todos os documentos, inclusive o artigo em PDF estão disponiveis no diretório de Docs:  https://github.com/paulinaJulia/quartzo/tree/main/Docs-quartzo
 
+## Link do Sonarcloud
+https://sonarcloud.io/summary/overall?id=paulinaJulia_quartzo&branch=main
+
+![image](https://github.com/user-attachments/assets/6af8a991-89ea-4ea3-bd78-8d9ae7b50ae6)
+
 Este README fornece uma visão geral do projeto.
