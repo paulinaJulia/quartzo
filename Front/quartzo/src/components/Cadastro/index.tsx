@@ -12,7 +12,7 @@ export const CadastroImovel: React.FC = () => {
         status: "",
         descricao: "",
     });
-    const BASE_URL = process.env.REACT_APP_API_URL || "https://teste-paulina.novadata.dev/";
+    const BASE_URL = process.env.REACT_APP_API_URL || "";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
